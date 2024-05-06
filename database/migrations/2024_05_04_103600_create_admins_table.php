@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('password');
             $table->string('no_hp');
             $table->string('alamat');
-            $table->foreignId('jenis_kelamin_id')->references('id_jenis_kelamin')->on('jenis_kelamin')->onDelete('cascade')->onUpdate('cascade');
+            $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
+            // $table->foreignId('jenis_kelamin_id')->references('id_jenis_kelamin')->on('jenis_kelamin')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
