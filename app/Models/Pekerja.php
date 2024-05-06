@@ -11,6 +11,7 @@ class Pekerja extends Model
     protected $table = 'pekerja';
 
     protected $fillable = [
+        'username',
         'nama',
         'email',
         'password',
@@ -18,9 +19,10 @@ class Pekerja extends Model
         'no_hp',
         'foto_formal',
         'foto_ktp',
-        'status_menerima_pesanan',
+        'status_menerima_order',
         'status_verifikasi',
         'latitude',
         'longitude',
+        'jenis_kelamin'
     ];
 }

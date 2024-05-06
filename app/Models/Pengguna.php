@@ -18,5 +18,6 @@ class Pengguna extends Model
         'no_hp',
         'alamat',
         'foto_profil',
+        'jenis_kelamin'
     ];
 }
