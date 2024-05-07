@@ -14,6 +14,11 @@ export default {
                 secondary: "#2C2727",
             },
         },
+
+        container: {
+            center: true,
+            padding: "1rem",
+        },
     },
     plugins: [require("flowbite/plugin")],
 };
