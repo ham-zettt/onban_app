@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('no_hp');
             $table->string('foto_formal')->nullable();
             $table->string('foto_ktp')->nullable();
-            $table->boolean('status_menerima_order')->nullable();
-            $table->boolean('status_verifikasi')->nullable();
+            $table->boolean('status_menerima_order')->nullable()->default(0);
+            $table->boolean('status_verifikasi')->nullable()->default(0);
             $table->decimal('latitude', 10, 8)->nullable();
             $table->decimal('longitude', 11, 8)->nullable();
             $table->timestamps();

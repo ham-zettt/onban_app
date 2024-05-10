@@ -10,7 +10,9 @@ use Illuminate\Http\Request;
 class UserRegisterController extends Controller
 {
     public function index() {
-        return view('register.register-user');
+        return view('register.register-user', [
+            "title" => "Register"
+        ]);
     }
 
     public function store(Request $request) {
@@ -36,10 +38,8 @@ class UserRegisterController extends Controller
             'nama' => $request->nama_lengkap,
             'alamat' => $request->alamat,
             'no_hp' => $request->no_hp,
-            
+
         ]);
-
-
         return redirect(route('login'))->with('success', 'Register Berhasil! Silahkan Login!');
     }
 }

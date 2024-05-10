@@ -15,6 +15,7 @@ class HomeController extends Controller
 
 
         return view('user.index', [
+            "title" => "Home",
             "nama" => session('userData')->customer->nama,
             "role" => session('userData')->role
         ]);

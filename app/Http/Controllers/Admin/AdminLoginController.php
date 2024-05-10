@@ -10,7 +10,9 @@ use Illuminate\Support\Facades\Auth;
 class AdminLoginController extends Controller
 {
     public function index() {
-        return view('login.login-admin');
+        return view('login.login-admin', [
+            "title" => "Login"
+        ]);
     }
 
     public function authenticate(Request $request)
@@ -24,9 +26,14 @@ class AdminLoginController extends Controller
 
         if (auth()->attempt($credentials)) {
             $user = Auth::user();
-            $userData = User::with('admin')->find($user->id);
-            session(['userData' => $userData]);
-            return redirect()->intended(route('admin-dashboard'));
+            if ($user->role === 'admin') {
+                $userData = User::with('admin')->find($user->id);
+                session(['userData' => $userData]);
+                return redirect()->intended(route('admin-dashboard'));
+            } else {
+                Auth::logout();
+                return back()->with('error', 'Hanya Admin yang dapat login di sini!');
+            }
         }
         return back()->with('error', 'Login Gagal! Silahkan cek username dan password anda!');
     }

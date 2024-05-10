@@ -10,7 +10,9 @@ use Illuminate\Support\Facades\Auth;
 class WorkerLoginController extends Controller
 {
     public function index() {
-        return view('login.login-worker');
+        return view('login.login-worker', [
+            "title" => "Login"
+        ]);
     }
     public function authenticate(Request $request)
     {
@@ -23,9 +25,14 @@ class WorkerLoginController extends Controller
 
         if (auth()->attempt($credentials)) {
             $user = Auth::user();
-            $userData = User::with('worker')->find($user->id);
-            session(['userData' => $userData]);
-            return redirect()->intended(route('worker-home'));
+            if ($user->role === 'worker') {
+                $userData = User::with('worker')->find($user->id);
+                session(['userData' => $userData]);
+                return redirect()->intended(route('worker-home'));
+            } else {
+                Auth::logout();
+                return back()->with('error', 'Hanya Worker yang dapat login di sini!');
+            }
         }
 
         return back()->with('error', 'Login Gagal! Silahkan cek username dan password anda!');

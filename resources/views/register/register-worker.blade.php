@@ -1,7 +1,7 @@
 @extends('layouts.form-dark-layout')
 @section('content')
     <h1 class="text-2xl font-semibold text-center text-gray-500 mt-8 mb-6">Registrasi Worker</h1>
-    <form class="w-full mx-auto" method="post" action="{{ route('register-worker') }}">
+    <form class="w-full mx-auto" method="post" action="{{ route('register-worker') }}" enctype="multipart/form-data">
         @csrf
         <div class="relative z-0 w-full mb-5 group">
             <input type="text" name="nama_lengkap" id="nama_lengkap"
@@ -82,6 +82,9 @@
             <input
                 class="block w-full text-[12px] text-white border border-gray-300 rounded-lg cursor-pointer bg-gray-400 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                 id="file_input" type="file" name="foto_ktp" value="{{ old('foto_ktp') }}">
+            @error('foto_ktp')
+                <span class="text-red-500">{{ $message }}</span>
+            @enderror
         </div>
         <div class="relative z-0 w-full mb-5 group">
             <label class="block mb-2 text-sm font-medium text-gray-500 dark:text-white" for="file_input">Upload Foto Formal
@@ -89,6 +92,9 @@
             <input
                 class="block w-full text-[12px] text-white border border-gray-300 rounded-lg cursor-pointer bg-gray-400 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                 id="file_input" type="file" name="foto_formal" value="{{ old('foto_formal') }}">
+            @error('foto_formal')
+                <span class="text-red-500">{{ $message }}</span>
+            @enderror
         </div>
         <button type="submit"
             class="text-gray-900 bg-white hover:bg-primary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register</button>
