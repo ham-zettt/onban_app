@@ -1,16 +1,22 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminDashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\UserLoginController;
 use App\Http\Controllers\Admin\AdminLoginController;
-use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\Admin\AdminRegisterController;
+use App\Http\Controllers\SessionControllerAdmin;
 use App\Http\Controllers\User\UserRegisterController;
+use App\Http\Controllers\Worker\WorkerHomeController;
 use App\Http\Controllers\Worker\WorkerLoginController;
 use App\Http\Controllers\Worker\WorkerRegisterController;
 
-Route::get('/', SessionController::class)->middleware('guest');
+
+// Route Session untuk ngecek user pertama kali masuk
+Route::get('/', SessionController::class);
 
 // Route Login Customer
 Route::prefix('login')->group(function () {
@@ -28,17 +34,27 @@ Route::prefix('register')->group(function () {
 });
 
 // Route Customer
-Route::get("/home", HomeController::class)->name('home')->middleware('auth');
+Route::middleware(['auth', 'is_customer'])->group(function () {
+    Route::get("/home", HomeController::class)->name('home');
+});
+
 
 
 // Route Admin
 Route::prefix('admin')->group(function () {
+    Route::get("/", SessionControllerAdmin::class);
     Route::get('/login', [AdminLoginController::class, 'index'])->name('login-admin');
     Route::post('/login', [AdminLoginController::class, 'authenticate']);
+
+    Route::get('/register', [AdminRegisterController::class, 'index'])->name('register-admin');
+    Route::post('/register', [AdminRegisterController::class, 'store']);
+
+    Route::middleware(['auth', 'is_admin'])->group(function () {
+        Route::get('/dashboard', AdminDashboardController::class)->name('admin-dashboard');
+    });
 });
 
 // Route Worker
-
 Route::prefix('worker')->group(function () {
     // Register
     Route::get('/register', [WorkerRegisterController::class, 'index'])->name('register-worker');
@@ -47,24 +63,16 @@ Route::prefix('worker')->group(function () {
     // Login
     Route::get('/login', [WorkerLoginController::class, 'index'])->name('login-worker');
     Route::post('/login', [WorkerLoginController::class, 'authenticate']);
+
+    Route::middleware(['auth', 'is_worker'])->group(function () {
+        Route::get("/home", WorkerHomeController::class)->name('worker-home');
+    });
 });
 
 
 // Route Logout
-
 Route::get('/logout', function () {
     session()->forget('userData');
     Auth::logout();
     return redirect()->route('login');
 })->name('logout');
-
-
-
-
-
-
-Route::prefix('admin')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard.index');
-    })->name('admin-dashboard');
-});

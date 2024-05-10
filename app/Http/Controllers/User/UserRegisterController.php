@@ -36,6 +36,7 @@ class UserRegisterController extends Controller
             'nama' => $request->nama_lengkap,
             'alamat' => $request->alamat,
             'no_hp' => $request->no_hp,
+            
         ]);
 
 

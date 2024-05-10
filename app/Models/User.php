@@ -51,11 +51,11 @@ class User extends Authenticatable
     }
 
     public function worker() {
-        return $this->hasOne(Worker::class);
+        return $this->hasOne(Worker::class, 'login_id');
     }
 
     public function admin() {
-        return $this->hasOne(Admin::class);
+        return $this->hasOne(Admin::class, 'login_id');
     }
 
     public function customer() {

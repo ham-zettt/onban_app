@@ -13,10 +13,8 @@ class Worker extends Model
     protected $table = 'worker';
 
     protected $fillable = [
-        'username',
+        'login_id',
         'nama',
-        'email',
-        'password',
         'alamat',
         'no_hp',
         'foto_formal',

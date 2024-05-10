@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('no_hp');
             $table->string('alamat');
             $table->string('foto_profil')->nullable();
-            $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
+            $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan'])->nullable();
 
             $table->timestamps();
         });

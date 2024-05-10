@@ -1,47 +1,45 @@
 <?php
 
-namespace App\Http\Controllers\Worker;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Worker;
 
-class WorkerRegisterController extends Controller
+class AdminRegisterController extends Controller
 {
     public function index() {
-        return view('register.register-worker');
+        return view('register.register-admin');
     }
 
-    public function store(Request $request) {
-
+    public function store(Request $request)
+    {
         // $request->validate([
-        //     'nama' => 'required',
-        //     'username' => 'required|unique:login,username',
-        //     'alamat' => 'required',
-        //     'no_hp' => 'required',
+        //     'nama_lengkap' => 'required',
+        //     'username' => 'required',
         //     'email' => 'required|email',
         //     'password' => 'required',
         //     'konfirmasi_password' => 'required|same:password',
+        //     'alamat' => 'required',
+        //     'no_hp' => 'required',
         // ]);
-
 
         $login = User::create([
             'username' => $request->username,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'role' => 'worker',
+            'role' => 'admin',
         ]);
 
-        Worker::create([
+        Admin::create([
             'login_id' => $login->id,
-            'nama' => $request->nama_lengkap,
+            'nama' => $request->nama,
             'alamat' => $request->alamat,
             'no_hp' => $request->no_hp,
+
         ]);
 
-
-        return redirect(route('login-worker'))->with('success', 'Register Berhasil! Silahkan Login!');
-
+        return redirect(route('login-admin'))->with('success', 'Register Berhasil! Silahkan Login!');
     }
 }

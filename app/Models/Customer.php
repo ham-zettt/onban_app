@@ -16,6 +16,7 @@ class Customer extends Model
         'login_id',
         'nama',
         'no_hp',
+        
         'alamat',
         'foto_profil',
         'jenis_kelamin'
