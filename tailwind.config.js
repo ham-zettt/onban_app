@@ -17,7 +17,6 @@ export default {
 
         container: {
             center: true,
-            padding: "1rem",
         },
     },
     plugins: [require("flowbite/plugin")],

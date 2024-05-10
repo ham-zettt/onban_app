@@ -49,11 +49,11 @@
 
 <body class="bg-gray-100 font-family-karla flex">
 
-    @include('partial.sidebar')
+    @include('partial.sidebar-admin')
 
     <div class="relative w-full flex flex-col h-screen overflow-y-hidden">
         <!-- Desktop Header -->
-        @include('partial.header')
+        @include('partial.header-admin')
 
         <!-- Mobile Header & Nav -->
         {{-- <header x-data="{ isOpen: false }" class="w-full bg-sidebar py-5 px-6 sm:hidden">
@@ -119,7 +119,7 @@
             </main>
         </div>
 
-        @include('partial.footer')
+        @include('partial.footer-admin')
     </div>
 
     @yield('js')

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('pesan', function (Blueprint $table) {
             $table->id('id_pesan');
-            $table->foreignId('pengguna_id')->references('id_pengguna')->on('pengguna')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('pekerja_id')->references('id_pekerja')->on('pekerja')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('customer_id')->references('id_customer')->on('customer')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('worker_id')->references('id_worker')->on('worker')->onDelete('cascade')->onUpdate('cascade');
             $table->text('pesan');
             $table->date('tanggal');
             $table->time('time');

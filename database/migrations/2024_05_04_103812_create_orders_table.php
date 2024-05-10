@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('order', function (Blueprint $table) {
             $table->id('id_order');
-            $table->foreignId('pengguna_id')->references('id_pengguna')->on('pengguna')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('pekerja_id')->references('id_pekerja')->on('pekerja')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('customer_id')->references('id_customer')->on('customer')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('worker_id')->references('id_worker')->on('worker')->onDelete('cascade')->onUpdate('cascade');
             $table->string('kode_voucher', 50);
             $table->enum('status_order', ['Menunggu', 'Diterima', 'Ditolak', 'Selesai', 'Dibatalkan']);
             $table->enum('metode_pembayaran', ['Cash', 'OVO', 'Gopay', 'Dana', 'LinkAja']);

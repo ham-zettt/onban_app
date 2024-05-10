@@ -11,22 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pekerja', function (Blueprint $table) {
-            $table->id('id_pekerja');
-            $table->string('username')->unique();
+        Schema::create('worker', function (Blueprint $table) {
+            $table->id('id_worker');
+            $table->foreignId('login_id')->references('id')->on('login')->onDelete('cascade')->onUpdate('cascade');
             $table->string('nama', 50);
             $table->string('alamat', 100);
             $table->string('no_hp');
-            $table->string('email', 50);
-            $table->string('password', 255);
             $table->string('foto_formal')->nullable();
             $table->string('foto_ktp')->nullable();
-            $table->boolean('status_menerima_order');
-            $table->boolean('status_verifikasi');
-            $table->decimal('latitude', 10, 8);
-            $table->decimal('longitude', 11, 8);
+            $table->boolean('status_menerima_order')->nullable();
+            $table->boolean('status_verifikasi')->nullable();
+            $table->decimal('latitude', 10, 8)->nullable();
+            $table->decimal('longitude', 11, 8)->nullable();
             $table->timestamps();
-            $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
+            $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan'])->nullable();
         });
     }
 
@@ -35,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pekerja');
+        Schema::dropIfExists('worker');
     }
 };
