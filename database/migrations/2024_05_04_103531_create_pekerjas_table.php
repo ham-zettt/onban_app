@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pekerja', function (Blueprint $table) {
-            $table->id('id_pekerja');
+        Schema::create('worker', function (Blueprint $table) {
+            $table->id('id_worker');
+            $table->foreignId('login_id')->references('id')->on('login')->onDelete('cascade')->onUpdate('cascade');
             $table->string('username')->unique();
             $table->string('nama', 50);
             $table->string('alamat', 100);
@@ -35,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pekerja');
+        Schema::dropIfExists('worker');
     }
 };

@@ -1,31 +1,65 @@
 <?php
 
-use App\Http\Controllers\SessionController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SessionController;
+use App\Http\Controllers\User\UserLoginController;
+use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\User\UserRegisterController;
+use App\Http\Controllers\Worker\WorkerLoginController;
+use App\Http\Controllers\Worker\WorkerRegisterController;
 
-Route::get('/', function () {
-    return view('login.login-user');
+Route::get('/', SessionController::class)->middleware('guest');
+
+// Route Login Customer
+Route::prefix('login')->group(function () {
+    // Route Login
+    Route::get('/', [UserLoginController::class, 'index'])->name('login');
+    Route::post('/', [UserLoginController::class, 'authenticate']);
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard.index');
+
+// Route Register Customer
+Route::prefix('register')->group(function () {
+    // Route Register
+    Route::get('/', [UserRegisterController::class, 'index'])->name('register');
+    Route::post('/', [UserRegisterController::class, 'store']);
 });
 
-Route::get('/login', function () {
-    return view('login.login-user');
-})->name('login-user');
+// Route Customer
+Route::get("/home", HomeController::class)->name('home')->middleware('auth');
 
-Route::get('/register', function () {
-    return view('register.register-user');
-})->name('register-user');
 
-Route::get('/worker/login', function () {
-    return view('register.register-worker');
-})->name('login-worker');
+// Route Admin
+Route::prefix('admin')->group(function () {
+    Route::get('/login', [AdminLoginController::class, 'index'])->name('login-admin');
+    Route::post('/login', [AdminLoginController::class, 'authenticate']);
+});
 
-Route::get('/worker/register', function () {
-    return view('register.register-worker');
-})->name('register-worker');
+// Route Worker
+
+Route::prefix('worker')->group(function () {
+    // Register
+    Route::get('/register', [WorkerRegisterController::class, 'index'])->name('register-worker');
+    Route::post('/register', [WorkerRegisterController::class, 'store']);
+
+    // Login
+    Route::get('/login', [WorkerLoginController::class, 'index'])->name('login-worker');
+    Route::post('/login', [WorkerLoginController::class, 'authenticate']);
+});
+
+
+// Route Logout
+
+Route::get('/logout', function () {
+    session()->forget('userData');
+    Auth::logout();
+    return redirect()->route('login');
+})->name('logout');
+
+
+
 
 
 

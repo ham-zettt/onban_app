@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('ulasan', function (Blueprint $table) {
             $table->id('id_ulasan');
-            $table->foreignId('pengguna_id')->references('id_pengguna')->on('pengguna')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('pekerja_id')->references('id_pekerja')->on('pekerja')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('customer_id')->references('id_customer')->on('customer')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('worker_id')->references('id_worker')->on('worker')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('order_id')->references('id_order')->on('order')->onDelete('cascade')->onUpdate('cascade');
             $table->text('ulasan');
             $table->float('rating');
