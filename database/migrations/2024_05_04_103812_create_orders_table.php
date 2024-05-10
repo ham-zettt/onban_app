@@ -16,10 +16,10 @@ return new class extends Migration
             $table->foreignId('pengguna_id')->references('id_pengguna')->on('pengguna')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('pekerja_id')->references('id_pekerja')->on('pekerja')->onDelete('cascade')->onUpdate('cascade');
             $table->string('kode_voucher', 50);
-            $table->foreignId('status_order_id')->references('id_status_order')->on('status_order')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('metode_pembayaran_id')->references('id_metode_pembayaran')->on('metode_pembayaran')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('status_pembayaran_id')->references('id_status_pembayaran')->on('status_pembayaran')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('harga');
+            $table->enum('status_order', ['Menunggu', 'Diterima', 'Ditolak', 'Selesai', 'Dibatalkan']);
+            $table->enum('metode_pembayaran', ['Cash', 'OVO', 'Gopay', 'Dana', 'LinkAja']);
+            $table->enum('status_pembayaran', ['Menunggu', 'Berhasil', 'Gagal']);
+            $table->integer('total_harga');
             $table->float('jarak');
             $table->text('catatan');
             $table->string('alamat');
