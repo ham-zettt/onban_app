@@ -27,6 +27,10 @@ class WorkerLoginController extends Controller
             $user = Auth::user();
             if ($user->role === 'worker') {
                 $userData = User::with('worker')->find($user->id);
+                if (!$userData->worker->status_penerimaan_worker) {
+                    Auth::logout();
+                    return back()->with('error', 'Akun anda belum diaktivasi oleh admin!');
+                }
                 session(['userData' => $userData]);
                 return redirect()->intended(route('worker-home'));
             } else {
