@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tailwind Admin Template</title>
-    <meta name="author" content="David Grzyb">
+    <link rel="icon" href="{{ asset('assets/images/onban-icon.png') }}" type="image/png">
+    <title>{{ $title }} | Dashboard</title>
     <meta name="description" content="">
 
     <!-- Tailwind -->
