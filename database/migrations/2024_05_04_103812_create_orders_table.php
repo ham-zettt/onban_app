@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('id_order');
             $table->foreignId('customer_id')->references('id_customer')->on('customer')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('worker_id')->references('id_worker')->on('worker')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('kode_voucher', 50);
+            $table->foreignId('voucher_id')->references('id_voucher')->on('voucher')->onDelete('cascade')->onUpdate('cascade');
             $table->enum('status_order', ['Menunggu', 'Diterima', 'Ditolak', 'Selesai', 'Dibatalkan']);
             $table->enum('metode_pembayaran', ['Cash', 'OVO', 'Gopay', 'Dana', 'LinkAja']);
             $table->enum('status_pembayaran', ['Menunggu', 'Berhasil', 'Gagal']);
@@ -31,7 +31,7 @@ return new class extends Migration
 
             // foreign ke kode voucher
 
-            $table->foreign('kode_voucher')->references('kode_voucher')->on('voucher')->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreign('kode_voucher')->references('kode_voucher')->on('voucher')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\User\HomeController;
-use App\Http\Controllers\kirimEmailController;
 use App\Http\Controllers\SessionControllerAdmin;
 use App\Http\Controllers\User\UserLoginController;
 use App\Http\Controllers\Admin\AdminLoginController;
@@ -13,9 +12,11 @@ use App\Http\Controllers\User\UserRegisterController;
 use App\Http\Controllers\Worker\WorkerHomeController;
 use App\Http\Controllers\Worker\WorkerLoginController;
 use App\Http\Controllers\Admin\AdminRegisterController;
+use App\Http\Controllers\Admin\UserDashboardController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\VoucherController;
+use App\Http\Controllers\Admin\WorkerDashboardController;
 use App\Http\Controllers\Worker\WorkerRegisterController;
-
 
 // Route Session untuk ngecek user pertama kali masuk
 Route::get('/', SessionController::class);
@@ -55,6 +56,9 @@ Route::prefix('admin')->group(function () {
 
     Route::middleware(['auth', 'is_admin'])->group(function () {
         Route::get('/dashboard', AdminDashboardController::class)->name('admin-dashboard');
+        Route::get('/users', UserDashboardController::class)->name('admin-users');
+        Route::get('/workers', WorkerDashboardController::class)->name('admin-workers');
+        Route::resource('/vouchers', VoucherController::class);
     });
 });
 

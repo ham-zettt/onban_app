@@ -114,7 +114,11 @@
 
         {{-- content --}}
         <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
+            <div class="h-30 bg-white p-6 shadow-lg">
+                <h1 class="text-2xl font-bold">{{ $title }}</h1>
+            </div>
             <main class="w-full flex-grow p-6">
+
                 @yield('content')
             </main>
         </div>
