@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Worker;
 
 use App\Models\User;
+use App\Models\Worker;
+use App\Mail\kirimEmail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Worker;
+use Illuminate\Support\Facades\Mail;
 
 class WorkerRegisterController extends Controller
 {
@@ -18,8 +20,6 @@ class WorkerRegisterController extends Controller
 
     public function store(Request $request)
     {
-        // return $request;
-
         $request->validate([
             'nama_lengkap' => 'required',
             'username' => 'required|unique:login,username',
@@ -56,7 +56,13 @@ class WorkerRegisterController extends Controller
             'foto_formal' => $fotoFormalPath ?? null,
         ]);
 
+        $emailData = [
+            "title" => "Mail Dari onban_app",
+            "body" => "berikut proses lebih lanjut setelah anda membuat akun sebagai worker agar dapat login ke aplikasi."
+        ];
 
-        return redirect(route('login-worker'))->with('success', 'Register Berhasil! Silahkan Login!');
+        Mail::to($request->email)->send(new kirimEmail($emailData));
+
+        return redirect(route('login-worker'))->with('success', 'Pembuatan Akun Worker berhasil, anda bisa login setelah admin mengkonfirmasi akun anda!, silahkan cek email anda untuk informasi lebih lanjut.');
     }
 }

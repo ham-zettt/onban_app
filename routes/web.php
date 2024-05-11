@@ -1,18 +1,19 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminDashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\kirimEmailController;
+use App\Http\Controllers\SessionControllerAdmin;
 use App\Http\Controllers\User\UserLoginController;
 use App\Http\Controllers\Admin\AdminLoginController;
-use App\Http\Controllers\Admin\AdminRegisterController;
-use App\Http\Controllers\LogoutController;
-use App\Http\Controllers\SessionControllerAdmin;
 use App\Http\Controllers\User\UserRegisterController;
 use App\Http\Controllers\Worker\WorkerHomeController;
 use App\Http\Controllers\Worker\WorkerLoginController;
+use App\Http\Controllers\Admin\AdminRegisterController;
+use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Worker\WorkerRegisterController;
 
 
@@ -75,3 +76,7 @@ Route::prefix('worker')->group(function () {
 
 // Route Logout
 Route::get('/logout', LogoutController::class)->name('logout');
+
+
+
+

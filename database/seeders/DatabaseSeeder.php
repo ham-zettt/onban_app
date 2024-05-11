@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Admin;
 use App\Models\Pekerja;
 use App\Models\Pengguna;
+use App\Models\StatusPenerimaanWorker;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -23,8 +24,13 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        Admin::factory(10)->create();
-        Pekerja::factory(10)->create();
-        Pengguna::factory(10)->create();
+        // Admin::factory(10)->create();
+        // Pekerja::factory(10)->create();
+        // Pengguna::factory(10)->create();
+
+        StatusPenerimaanWorker::create([
+            'status_penerimaan' => true,
+            'keterangan' => 'ditutup sampai 23 Mei 2024',
+        ]);
     }
 }
