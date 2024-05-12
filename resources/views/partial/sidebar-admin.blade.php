@@ -14,7 +14,7 @@
             <i class="fas fa-sticky-note mr-3"></i>
             User
         </a>
-        <a href="{{ route('admin-workers') }}" class="flex items-center {{ Request::is('admin/workers') ? 'active-nav-link' : '' }} text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+        <a href="{{ route('admin-workers') }}" class="flex items-center {{ Request::is('admin/workers*') ? 'active-nav-link' : '' }} text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
             <i class="fas fa-table mr-3"></i>
             Worker
         </a>

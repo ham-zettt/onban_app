@@ -7,14 +7,17 @@ use App\Models\Worker;
 use App\Mail\kirimEmail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\StatusPenerimaanWorker;
 use Illuminate\Support\Facades\Mail;
 
 class WorkerRegisterController extends Controller
 {
     public function index()
     {
+        $status_penerimaan = StatusPenerimaanWorker::first();
         return view('register.register-worker', [
-            "title" => "Register"
+            "title" => "Register",
+            "status_penerimaan" => $status_penerimaan->status_penerimaan,
         ]);
     }
 

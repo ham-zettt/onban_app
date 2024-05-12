@@ -6,6 +6,7 @@ use App\Models\Worker;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
+use App\Models\StatusPenerimaanWorker;
 
 class AdminDashboardController extends Controller
 {
@@ -18,12 +19,14 @@ class AdminDashboardController extends Controller
         $jumlahWorkerAktif = Worker::where('status_menerima_order', 1)->count();
         $jumlahWorkerNonAktif = Worker::where('status_menerima_order', 0)->count();
         $jumlahCustomer = Customer::count();
+        $status_penerimaan_worker = StatusPenerimaanWorker::first();
 
         return view('dashboard.index', [
             "title" => "Dashboard",
             "jumlahWorkerAktif" => $jumlahWorkerAktif,
             "jumlahWorkerNonAktif" => $jumlahWorkerNonAktif,
-            "jumlahCustomer" => $jumlahCustomer
+            "jumlahCustomer" => $jumlahCustomer,
+            "status_penerimaan_worker" => $status_penerimaan_worker
         ]);
     }
 }

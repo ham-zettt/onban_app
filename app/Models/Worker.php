@@ -11,6 +11,7 @@ class Worker extends Model
     use HasFactory;
 
     protected $table = 'worker';
+    protected $primaryKey = 'id_worker';
 
     protected $fillable = [
         'login_id',

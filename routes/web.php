@@ -14,6 +14,7 @@ use App\Http\Controllers\Worker\WorkerLoginController;
 use App\Http\Controllers\Admin\AdminRegisterController;
 use App\Http\Controllers\Admin\UserDashboardController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\StatusTerimaWorkerController;
 use App\Http\Controllers\Admin\VoucherController;
 use App\Http\Controllers\Admin\WorkerDashboardController;
 use App\Http\Controllers\Worker\WorkerRegisterController;
@@ -56,9 +57,15 @@ Route::prefix('admin')->group(function () {
 
     Route::middleware(['auth', 'is_admin'])->group(function () {
         Route::get('/dashboard', AdminDashboardController::class)->name('admin-dashboard');
+        // dashboatd user
         Route::get('/users', UserDashboardController::class)->name('admin-users');
-        Route::get('/workers', WorkerDashboardController::class)->name('admin-workers');
+        // dashboard worker
+        Route::get('/workers', [WorkerDashboardController::class, "index"])->name('admin-workers');
+        Route::get('/workers/{id}/show', [WorkerDashboardController::class, "show"])->name('admin-workers-show');
+        // dashboard voucher
         Route::resource('/vouchers', VoucherController::class);
+        // dashboard status penerimaan
+        Route::put('{id}/update-status', [StatusTerimaWorkerController::class, 'updateStatus'])->name('updateStatusPenerimaan');
     });
 });
 
