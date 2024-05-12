@@ -1,6 +1,4 @@
-<nav class="bg-orange-50">
-    <div class="container bg-blue-200 px-4 flex justify-between py-3">
-        <h1>Navbar</h1>
-        <a href="{{ route('logout') }}">Logout</a>
-    </div>
+
+<nav class="bg-gradient-to-b from-[#F77F00] px-4 min-h-40 flex h-60  ">
+    <img class="h-10 mt-5 w-auto" src="{{ asset('assets/images/logoUser.svg') }}" alt="Your Company">
 </nav>

@@ -5,12 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style >
+        *{
+            border:1px solid black;
+        }
+    </style>
     <title>Home</title>
 </head>
 <body>
     @include('partial.header-user')
 
-    <div class="container px-4">
+    <div class="container px-4 ">
         @yield('content')
     </div>
 
