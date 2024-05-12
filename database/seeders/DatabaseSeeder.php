@@ -2,13 +2,14 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use App\Models\Admin;
 use App\Models\Pekerja;
 use App\Models\Pengguna;
-use App\Models\StatusPenerimaanWorker;
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Facades\DB;
+use App\Models\StatusPenerimaanWorker;
 
 class DatabaseSeeder extends Seeder
 {
@@ -31,6 +32,10 @@ class DatabaseSeeder extends Seeder
         StatusPenerimaanWorker::create([
             'status_penerimaan' => true,
             'keterangan' => 'ditutup sampai 23 Mei 2024',
+        ]);
+
+        $login = DB::table('login')->insertGetId([
+            "username" => "admin",
         ]);
     }
 }

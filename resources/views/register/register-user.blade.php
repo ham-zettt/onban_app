@@ -69,11 +69,11 @@
             </div>
             <div class="flex items-center gap-4 me-4 mb-6">
                 <div>
-                    <input id="orange-radio" type="radio" value="Laki-laki" name="jenis-kelamin" class="w-4 h-4 text-orange-500 bg-gray-100 border-gray-300 focus:ring-orange-500 dark:focus:ring-orange-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <input id="orange-radio" type="radio" value="Laki-laki" name="jenis_kelamin" class="w-4 h-4 text-orange-500 bg-gray-100 border-gray-300 focus:ring-orange-500 dark:focus:ring-orange-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                     <label for="orange-radio" class="ms-2 text-sm font-medium text-gray-500 dark:text-gray-300">Laki-laki</label>
                 </div>
                 <div>
-                    <input id="orange-radio" type="radio" value="Perempuan" name="jenis-kelamin" class="w-4 h-4 text-orange-500 bg-gray-100 border-gray-300 focus:ring-orange-500 dark:focus:ring-orange-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <input id="orange-radio" type="radio" value="Perempuan" name="jenis_kelamin" class="w-4 h-4 text-orange-500 bg-gray-100 border-gray-300 focus:ring-orange-500 dark:focus:ring-orange-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                     <label for="orange-radio" class="ms-2 text-sm font-medium text-gray-500 dark:text-gray-300">Perempuan</label>
                 </div>
             </div>
@@ -83,8 +83,8 @@
                 <span class="flex justify-center mt-2 mb-2 text-[12px] px-3 font-medium text-gray-900 bg-white left-1/2 dark:text-white dark:bg-gray-900">Sudah Punya Akun? <a href="{{ route('login') }}" class="text-cyan-600 pl-1"> Login</a></span>
             </div>
         </div>
-        
-               
-      
+
+
+
     </form>
 @endsection

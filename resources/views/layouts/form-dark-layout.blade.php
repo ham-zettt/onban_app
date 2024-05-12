@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="{{ asset('assets/images/onban-icon.png') }}" type="image/png">
+    <link rel="icon" href="{{ asset('assets/images/workerLogo.svg') }}" type="image/png">
 	<title>{{ $title }} | onbann</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 	<style>
