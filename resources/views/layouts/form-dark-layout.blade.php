@@ -4,7 +4,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Iniciar sesión - Mi aplicación</title>
+    <link rel="icon" href="{{ asset('assets/images/onban-icon.png') }}" type="image/png">
+	<title>{{ $title }} | onbann</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 	<style>
 		*{

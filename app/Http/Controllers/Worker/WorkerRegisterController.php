@@ -3,29 +3,43 @@
 namespace App\Http\Controllers\Worker;
 
 use App\Models\User;
+use App\Models\Worker;
+use App\Mail\kirimEmail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Worker;
+use Illuminate\Support\Facades\Mail;
 
 class WorkerRegisterController extends Controller
 {
-    public function index() {
-        return view('register.register-worker');
+    public function index()
+    {
+        return view('register.register-worker', [
+            "title" => "Register"
+        ]);
     }
 
-    public function store(Request $request) {
-
+    public function store(Request $request)
+    {
         $request->validate([
-            'nama' => 'required',
+            'nama_lengkap' => 'required',
             'username' => 'required|unique:login,username',
             'alamat' => 'required',
             'no_hp' => 'required',
             'email' => 'required|email',
             'password' => 'required',
             'konfirmasi_password' => 'required|same:password',
+            "foto_ktp" => "file|max:2048",
+            "foto_formal" => "file|max:2048",
         ]);
 
+        if ($request->hasFile('foto_ktp')) {
+            $fotoKtpPath = $request->file('foto_ktp')->store('worker');
+        }
 
+        if ($request->hasFile('foto_formal')) {
+            $fotoFormalPath = $request->file('foto_formal')->store('worker');
+
+        }
         $login = User::create([
             'username' => $request->username,
             'email' => $request->email,
@@ -38,10 +52,17 @@ class WorkerRegisterController extends Controller
             'nama' => $request->nama_lengkap,
             'alamat' => $request->alamat,
             'no_hp' => $request->no_hp,
+            'foto_ktp' => $fotoKtpPath ?? null,
+            'foto_formal' => $fotoFormalPath ?? null,
         ]);
 
+        $emailData = [
+            "title" => "Mail Dari onban_app",
+            "body" => "berikut proses lebih lanjut setelah anda membuat akun sebagai worker agar dapat login ke aplikasi."
+        ];
 
-        return redirect(route('login-worker'))->with('success', 'Register Berhasil! Silahkan Login!');
+        Mail::to($request->email)->send(new kirimEmail($emailData));
 
+        return redirect(route('login-worker'))->with('success', 'Pembuatan Akun Worker berhasil, anda bisa login setelah admin mengkonfirmasi akun anda!, silahkan cek email anda untuk informasi lebih lanjut.');
     }
 }

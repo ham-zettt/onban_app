@@ -1,11 +1,14 @@
 @extends('layouts.form-dark-layout')
 @section('content')
-    <h1 class="text-2xl font-semibold text-center text-white mt-8 mb-6">Registrasi Worker</h1>
-    <form class="w-3/4 md:w-2/3 xl:w-2/3 lg:w-2/3 mx-auto" method="post" action="{{ route('register-worker') }}" autocomplete="off">
+
+    <h1 class="text-2xl font-semibold text-center text-gray-500 mt-8 mb-6">Registrasi Worker</h1>
+    <form class="w-full mx-auto" method="post" action="{{ route('register-worker') }}" enctype="multipart/form-data">
+
         @csrf
         <div class="relative z-0 w-full mb-5 group">
             <input type="text" name="nama_lengkap" id="nama_lengkap"
-                class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-primary focus:outline-none focus:ring-0 focus:border-primary peer"
+                class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-primary focus:outline-none focus:ring-0 focus:border-
+                primary peer"
                 placeholder=" " required value="{{ old('nama_lengkap') }}" />
             <label for="floating_name"
                 class="peer-focus:font-medium absolute text-sm text-white dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-primary peer-focus:dark:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nama
@@ -82,6 +85,9 @@
             <input
                 class="block w-full text-[12px] text-secondary border border-gray-300 rounded-lg cursor-pointer bg-white dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                 id="file_input" type="file" name="foto_ktp" value="{{ old('foto_ktp') }}">
+            @error('foto_ktp')
+                <span class="text-red-500">{{ $message }}</span>
+            @enderror
         </div>
         <div class="relative z-0 w-full mb-5 group">
             <label class="block mb-2 text-sm font-medium text-white dark:text-white" for="file_input">Upload Foto Formal
@@ -89,6 +95,9 @@
             <input
                 class="block w-full text-[12px] text-secondary border border-gray-300 rounded-lg cursor-pointer bg-white dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                 id="file_input" type="file" name="foto_formal" value="{{ old('foto_formal') }}">
+            @error('foto_formal')
+                <span class="text-red-500">{{ $message }}</span>
+            @enderror
         </div>
         <div class="flex">
             <label for="jenis_kelamin" class="mb-2 text-white"> Jenis Kelamin :</label>

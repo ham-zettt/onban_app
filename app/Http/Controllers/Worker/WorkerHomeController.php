@@ -13,8 +13,9 @@ class WorkerHomeController extends Controller
     public function __invoke()
     {
         return view('worker.index', [
-            "nama" => session('userData')->worker->nama,
-            "role" => session('userData')->role
-        ]) ;
+            "title" => "Home",
+            "role" => session('userData')->role,
+            "worker" => session('userData')->worker
+        ]);
     }
 }
