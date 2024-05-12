@@ -15,15 +15,15 @@ class WorkerRegisterController extends Controller
 
     public function store(Request $request) {
 
-        // $request->validate([
-        //     'nama' => 'required',
-        //     'username' => 'required|unique:login,username',
-        //     'alamat' => 'required',
-        //     'no_hp' => 'required',
-        //     'email' => 'required|email',
-        //     'password' => 'required',
-        //     'konfirmasi_password' => 'required|same:password',
-        // ]);
+        $request->validate([
+            'nama' => 'required',
+            'username' => 'required|unique:login,username',
+            'alamat' => 'required',
+            'no_hp' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+            'konfirmasi_password' => 'required|same:password',
+        ]);
 
 
         $login = User::create([

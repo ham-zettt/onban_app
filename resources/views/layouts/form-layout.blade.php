@@ -8,7 +8,7 @@
 	@vite(['resources/css/app.css', 'resources/js/app.js'])
 	<style>
 		*{
-			border: 1px solid black;
+			/* border: 1px solid black; */
 		}
 	</style>
 </head>

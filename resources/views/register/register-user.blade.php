@@ -49,6 +49,9 @@
                     placeholder=" " required />
                 <label for="floating_password"
                     class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-primary peer-focus:dark:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
+                    @error('password')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
             </div>
             <div class="relative z-0 w-full mb-5 group">
                 <input type="password" name="konfirmasi_password" id="konfirmasi_password"
@@ -57,14 +60,20 @@
                 <label for="floating_password"
                     class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-primary peer-focus:dark:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Ulangi
                     Password</label>
+                    @error('konfirmasi_password')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
             </div>
-            <div class="flex items-center gap-4 me-4">
+            <div class="flex">
+                <label for="jenis_kelamin" class="mb-2 text-gray-500"> Jenis Kelamin :</label>
+            </div>
+            <div class="flex items-center gap-4 me-4 mb-6">
                 <div>
-                    <input id="orange-radio" type="radio" value="laki-laki" name="colored-radio" class="w-4 h-4 text-orange-500 bg-gray-100 border-gray-300 focus:ring-orange-500 dark:focus:ring-orange-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <input id="orange-radio" type="radio" value="Laki-laki" name="jenis-kelamin" class="w-4 h-4 text-orange-500 bg-gray-100 border-gray-300 focus:ring-orange-500 dark:focus:ring-orange-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                     <label for="orange-radio" class="ms-2 text-sm font-medium text-gray-500 dark:text-gray-300">Laki-laki</label>
                 </div>
                 <div>
-                    <input id="orange-radio" type="radio" value="perempuan" name="colored-radio" class="w-4 h-4 text-orange-500 bg-gray-100 border-gray-300 focus:ring-orange-500 dark:focus:ring-orange-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <input id="orange-radio" type="radio" value="Perempuan" name="jenis-kelamin" class="w-4 h-4 text-orange-500 bg-gray-100 border-gray-300 focus:ring-orange-500 dark:focus:ring-orange-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                     <label for="orange-radio" class="ms-2 text-sm font-medium text-gray-500 dark:text-gray-300">Perempuan</label>
                 </div>
             </div>

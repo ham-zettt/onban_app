@@ -2,9 +2,7 @@
 @section("content")
     @if (session()->has('success'))
         
-        <div id="alert-3" class="flex items-center p-4 mb-4 text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
-
-            
+        <div id="alert-3" class="flex items-center p-4 mb-4 text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">  
             <div class="ms-3 text-sm font-medium">
                 {{ session()->get('success') }}
             </div>
@@ -20,7 +18,7 @@
     
     <h1 class="text-2xl font-semibold text-center text-gray-500 mt-8 mb-6">Login</h1>
     @if (session()->has('error'))
-        <div class="bg-red-500 text-white p-3 rounded-lg text-center">
+        <div class="bg-red-500 text-white p-3 rounded-lg text-center mb-10">
             {{ session()->get('error') }}
         </div>
     @endif
