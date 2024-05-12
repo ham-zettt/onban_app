@@ -24,6 +24,7 @@ class UserRegisterController extends Controller
             'konfirmasi_password' => 'required|same:password',
             'alamat' => 'required',
             'no_hp' => 'required',
+            'jenis_kelamin' => 'required',
         ]);
 
         $login = User::create([
@@ -38,6 +39,7 @@ class UserRegisterController extends Controller
             'nama' => $request->nama_lengkap,
             'alamat' => $request->alamat,
             'no_hp' => $request->no_hp,
+            'jenis_kelamin' => $request->jenis_kelamin,
 
         ]);
         return redirect(route('login'))->with('success', 'Register Berhasil! Silahkan Login!');

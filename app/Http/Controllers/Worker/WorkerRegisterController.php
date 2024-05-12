@@ -33,6 +33,7 @@ class WorkerRegisterController extends Controller
             'konfirmasi_password' => 'required|same:password',
             "foto_ktp" => "file|max:2048",
             "foto_formal" => "file|max:2048",
+            "jenis_kelamin" => "required"
         ]);
 
         if ($request->hasFile('foto_ktp')) {
@@ -56,6 +57,7 @@ class WorkerRegisterController extends Controller
             'alamat' => $request->alamat,
             'no_hp' => $request->no_hp,
             'foto_ktp' => $fotoKtpPath ?? null,
+            'jenis_kelamin' => $request->jenis_kelamin,
             'foto_formal' => $fotoFormalPath ?? null,
         ]);
 
