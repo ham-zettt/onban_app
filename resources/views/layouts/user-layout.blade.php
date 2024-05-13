@@ -7,7 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-
+    <style>
+        *{
+            /* border: 1px solid black; */
+        }
+    </style>
     <title>{{ $title }} | onban</title>
 
 </head>
