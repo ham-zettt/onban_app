@@ -1,6 +1,6 @@
 @extends('layouts.form-dark-layout')
 @section('content')
-    <h1 class="text-2xl font-semibold text-center text-gray-500 mt-8 mb-6">Registrasi Worker</h1>
+    <h1 class="text-2xl font-semibold text-center text-white mt-8 mb-6">Registrasi Worker</h1>
     @if ($status_penerimaan == 0)
         <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
             <strong class="font-bold">Peringatan!</strong>

@@ -21,7 +21,5 @@
     <div class="container px-4 ">
         @yield('content')
     </div>
-
-    @include('partial.footer-user')
 </body>
 </html>

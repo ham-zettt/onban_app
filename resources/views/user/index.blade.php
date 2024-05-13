@@ -12,7 +12,7 @@
             <p>Tambal Ban Online: Perbaikan Ban Langsung ke Lokasi Anda!</p>
         </div>
         <div class="flex justify-center w-full h-14 mt-16 ">
-            <a href="#" class="bg-[#F77F00] justify-center flex flex-col px-10 py-6 rounded-lg text-white xl:border-none lg:border-none border-none hover:px-12 hover:py-8 shadow-lg"><b>Pesan Sekarang</b> </a>
+            <a href="{{ route('order-pilih-kendaraan') }}" class="bg-[#F77F00] justify-center flex flex-col px-10 py-6 rounded-lg text-white xl:border-none lg:border-none border-none hover:px-12 hover:py-8 shadow-lg"><b>Pesan Sekarang</b> </a>
         </div>
     </div>
     {{-- <p>{{ $role }}</p> --}}
