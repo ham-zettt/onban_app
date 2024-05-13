@@ -41,8 +41,7 @@
                                     <div class="flex items-center">
                                         <div class="flex-shrink-0 w-10 h-10">
                                             <img class="w-full h-full rounded-full object-cover"
-                                                src="{{ asset('storage/' . $worker->foto_formal) }}"
-                                                alt="" />
+                                                src="{{ asset('storage/' . $worker->foto_formal) }}" alt="" />
                                         </div>
                                         <div class="ml-3">
                                             <p class="text-gray-900 whitespace-no-wrap">
@@ -77,12 +76,13 @@
                                     <p class="text-gray-900 whitespace-no-wrap">Laki-Laki</p>
                                 </td>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <a href="{{ route('admin-workers-show', $worker->id_worker) }}" class="mr-2">Detail</a>
-                                    <a href="">Hapus</a>
+                                    <a href="{{ route('admin-workers-show', $worker->id_worker) }}"
+                                        class="mr-2">Detail</a>
+                                    <a onclick="return confirm('yakin ingin dihapus ? ')"
+                                        href="{{ route('admin-workers-delete', $worker->id_worker) }}">Hapus</a>
                                 </td>
                             </tr>
                         @endforeach
-
                     </tbody>
                 </table>
             </div>

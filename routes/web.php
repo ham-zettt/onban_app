@@ -58,10 +58,11 @@ Route::prefix('admin')->group(function () {
     Route::middleware(['auth', 'is_admin'])->group(function () {
         Route::get('/dashboard', AdminDashboardController::class)->name('admin-dashboard');
         // dashboatd user
-        Route::get('/users', UserDashboardController::class)->name('admin-users');
+        Route::get('/users', [UserDashboardController::class, "index"])->name('admin-users');
         // dashboard worker
         Route::get('/workers', [WorkerDashboardController::class, "index"])->name('admin-workers');
         Route::get('/workers/{id}/show', [WorkerDashboardController::class, "show"])->name('admin-workers-show');
+        Route::get('/workers/{id}/delete', [WorkerDashboardController::class, "destroy"])->name('admin-workers-delete');
         // dashboard voucher
         Route::resource('/vouchers', VoucherController::class);
         // dashboard status penerimaan
