@@ -22,6 +22,10 @@
             <i class="fas fa-align-left mr-3"></i>
             Voucher
         </a>
+        <a href="{{ route('metode-pembayaran.index') }}" class="flex items-center {{ Request::is('admin/metode_pembayaran*') ? 'active-nav-link' : '' }} text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+            <i class="fas fa-align-left mr-3"></i>
+            Metode Pembayaran
+        </a>
 
     </nav>
     <a href="#" class="absolute w-full upgrade-btn bottom-0 active-nav-link text-white flex items-center justify-center py-4">

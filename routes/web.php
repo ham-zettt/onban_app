@@ -6,6 +6,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\SessionControllerAdmin;
+use App\Http\Controllers\Admin\VoucherController;
 use App\Http\Controllers\User\UserLoginController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\User\UserRegisterController;
@@ -14,10 +15,10 @@ use App\Http\Controllers\Worker\WorkerLoginController;
 use App\Http\Controllers\Admin\AdminRegisterController;
 use App\Http\Controllers\Admin\UserDashboardController;
 use App\Http\Controllers\Admin\AdminDashboardController;
-use App\Http\Controllers\Admin\StatusTerimaWorkerController;
-use App\Http\Controllers\Admin\VoucherController;
 use App\Http\Controllers\Admin\WorkerDashboardController;
 use App\Http\Controllers\Worker\WorkerRegisterController;
+use App\Http\Controllers\Admin\MetodePembayaranController;
+use App\Http\Controllers\Admin\StatusTerimaWorkerController;
 
 // Route Session untuk ngecek user pertama kali masuk
 Route::get('/', SessionController::class);
@@ -67,6 +68,8 @@ Route::prefix('admin')->group(function () {
         Route::resource('/vouchers', VoucherController::class);
         // dashboard status penerimaan
         Route::put('{id}/update-status', [StatusTerimaWorkerController::class, 'updateStatus'])->name('updateStatusPenerimaan');
+        // Dashboard metode pembayaran
+        Route::resource('/metode-pembayaran', MetodePembayaranController::class);
     });
 });
 

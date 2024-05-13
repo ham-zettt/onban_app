@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Admin;
+use App\Models\MetodePembayaran;
 use App\Models\Pekerja;
 use App\Models\Pengguna;
 use Illuminate\Database\Seeder;
@@ -32,6 +33,11 @@ class DatabaseSeeder extends Seeder
         StatusPenerimaanWorker::create([
             'status_penerimaan' => true,
             'keterangan' => 'ditutup sampai 23 Mei 2024',
+        ]);
+
+        MetodePembayaran::create([
+            'nama_metode_pembayaran' => 'Bayar di Tempat',
+            'deskripsi_metode_pembayaran' => 'Pembayaran dilakukan di tempat',
         ]);
 
         // $login = DB::table('login')->insertGetId([
