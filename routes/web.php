@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\AdminRegisterController;
 use App\Http\Controllers\Admin\UserDashboardController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\WorkerDashboardController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Worker\WorkerRegisterController;
 use App\Http\Controllers\Admin\MetodePembayaranController;
 use App\Http\Controllers\Admin\StatusTerimaWorkerController;
@@ -41,9 +42,16 @@ Route::prefix('register')->group(function () {
 // Route Customer
 Route::middleware(['auth', 'is_customer'])->group(function () {
     Route::get("/home", HomeController::class)->name('home');
+    // Route Order
+    Route::get("/order", [OrderController::class, 'index'])->name('order-pilih-kendaraan');
+    Route::get("/order/detail", function(){
+        return view("order-user/order-detail", [
+            "title" => "Informasi Order",
+            "nama" => session('userData')->customer->nama,
+            "role" => session('userData')->role
+        ]);
+    })->name('order-detail');
 });
-
-
 
 // Route Admin
 Route::prefix('admin')->group(function () {
@@ -85,7 +93,10 @@ Route::prefix('worker')->group(function () {
 
     Route::middleware(['auth', 'is_worker'])->group(function () {
         Route::get("/home", WorkerHomeController::class)->name('worker-home');
+        Route::get("/home", WorkerHomeController::class)->name('worker-home');
     });
+
+    // Route
 });
 
 

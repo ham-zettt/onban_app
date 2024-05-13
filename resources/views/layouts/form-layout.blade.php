@@ -15,7 +15,7 @@
 	</style>
 </head>
 <body class="bg-white">
-	<div class="min-h-screen w-screen flex flex-col m-3 p-6 items-center justify-center">
+	<div class="min-h-screen w-screen flex flex-col p-6 items-center justify-center">
 		<div class="flex justify-center mb-8">
 			{{-- <h1 class="text-5xl m-5">Logo</h1> --}}
 			<div class="sm:mx-auto sm:w-full sm:max-w-sm">

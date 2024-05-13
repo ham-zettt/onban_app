@@ -14,7 +14,7 @@
 	</style>
 </head>
 <body class="bg-secondary">
-  <div class="min-h-screen flex flex-col m-3 p-6 items-center justify-center">
+  <div class="border-2 min-h-screen flex flex-col p-6 items-center justify-center">
 	<div class="flex justify-center mb-8">
 		{{-- <h1 class="text-5xl m-5">Logo</h1> --}}
 		<div class="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -22,7 +22,7 @@
 			{{-- <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Admin Login</h2> --}}
 		</div>
 	  </div>
-			@yield("content")
+        @yield("content")
 		<p class="text-xs text-white text-center mt-5 justify-end">&copy; 2024 OnBan-Corporation</p>
 	</div>
   </div>
