@@ -33,7 +33,6 @@ class UserLoginController extends Controller
                 return back()->with('error', 'Hanya pelanggan yang dapat login di sini!');
             }
         }
-
         return back()->with('error', 'Login Gagal! Silahkan cek username dan password anda!');
     }
 }
