@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use App\Models\Worker;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class WorkerDashboardController extends Controller
 {
@@ -27,5 +29,18 @@ class WorkerDashboardController extends Controller
             "title" => "Detail Worker",
             "worker" => $worker,
         ]);
+    }
+
+    public function destroy(string $id)
+    {
+        $worker = Worker::findOrFail($id);
+        $foto_ktp_path = $worker->foto_ktp;
+        $foto_formal_path = $worker->foto_formal;
+        Storage::delete([$foto_ktp_path, $foto_formal_path]);
+        $login_id = $worker->login_id;
+        $worker->delete();
+        $login = User::findOrFail($login_id);
+        $login->delete();
+        return redirect()->route('admin-workers')->with('success', 'Worker berhasil dihapus!');
     }
 }

@@ -34,8 +34,8 @@ class DatabaseSeeder extends Seeder
             'keterangan' => 'ditutup sampai 23 Mei 2024',
         ]);
 
-        $login = DB::table('login')->insertGetId([
-            "username" => "admin",
-        ]);
+        // $login = DB::table('login')->insertGetId([
+        //     "username" => "admin",
+        // ]);
     }
 }
