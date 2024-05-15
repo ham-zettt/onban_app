@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('voucher_id')->references('id_voucher')->on('voucher')->onDelete('cascade')->onUpdate('cascade');
             $table->enum('status_order', ['Menunggu Pekerja', 'Diproses', 'Selesai', 'Dibatalkan']);
             $table->foreignId('metode_pembayaran_id')->references('id_metode_pembayaran')->on('metode_pembayaran')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('tipe_layanan_id')->references('id_tipe_layanan')->on('tipe_layanan')->onDelete('cascade')->onUpdate('cascade');
             $table->enum('status_pembayaran', ['Menunggu', 'Berhasil', 'Gagal']);
             $table->integer('total_harga');
             $table->float('jarak');
