@@ -1,54 +1,52 @@
 @extends('layouts.dashboard-layout')
+
 @section('content')
     @if (session()->has('success'))
-        <div id="alert-1"
-            class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
-            role="alert">
-            <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                viewBox="0 0 20 20">
-                <path
-                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-            </svg>
-            <span class="sr-only">Info</span>
-            <div class="ms-3 text-sm font-medium">
-                {{ session('success') }}
-            </div>
-            <button type="button"
-                class="ms-auto -mx-1.5 -my-1.5 bg-blue-50 text-blue-500 rounded-lg focus:ring-2 focus:ring-blue-400 p-1.5 hover:bg-blue-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-blue-400 dark:hover:bg-gray-700"
-                data-dismiss-target="#alert-1" aria-label="Close">
-                <span class="sr-only">Close</span>
-                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 14 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                </svg>
-            </button>
-        </div>
+        @include('partial.alert-success', ['message' => session()->get('success')])
     @endif
-    <div class="flex gap-x-6">
-        <div>
-            <h1>Jumlah Worker : {{ $jumlahWorkerAktif }}</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+        <div class="p-4 bg-white shadow-md rounded-lg dark:bg-gray-800">
+            <h1 class="text-xl font-semibold">Jumlah Worker Terverifikasi</h1>
+            <p class="text-gray-600 dark:text-gray-400">{{ $jumlahWorkerTerverifikasi }}</p>
         </div>
-        <div>
-            <h1>Jumlah Worker belum terverifikasi : {{ $jumlahWorkerNonAktif }}</h1>
+        <div class="p-4 bg-white shadow-md rounded-lg dark:bg-gray-800">
+            <h1 class="text-xl font-semibold">Jumlah Worker belum terverifikasi</h1>
+            <p class="text-gray-600 dark:text-gray-400">{{ $jumlahWorkerBelumTerverifikasi }}</p>
         </div>
-        <div>
-            <h1>Jumlah User : {{ $jumlahCustomer }}</h1>
+        <div class="p-4 bg-white shadow-md rounded-lg dark:bg-gray-800">
+            <h1 class="text-xl font-semibold">Jumlah Worker ON</h1>
+            <p class="text-gray-600 dark:text-gray-400">{{ $jumlahWorkerAktif }}</p>
+        </div>
+        <div class="p-4 bg-white shadow-md rounded-lg dark:bg-gray-800">
+            <h1 class="text-xl font-semibold">Jumlah Worker OFF</h1>
+            <p class="text-gray-600 dark:text-gray-400">{{ $jumlahWorkerNonAktif }}</p>
+        </div>
+        <div class="p-4 bg-white shadow-md rounded-lg dark:bg-gray-800">
+            <h1 class="text-xl font-semibold">Jumlah User</h1>
+            <p class="text-gray-600 dark:text-gray-400">{{ $jumlahCustomer }}</p>
         </div>
     </div>
-    <form method="POST" action="{{ route('updateStatusPenerimaan', $status_penerimaan_worker->id) }}">
+
+    <form method="POST" action="{{ route('updateStatusPenerimaan', $status_penerimaan_worker->id) }}" class="bg-white p-6 shadow-md rounded-lg dark:bg-gray-800">
         @csrf
         @method('put')
 
-        <label for="status_penerimaan">Status Penerimaan:</label>
-        <select name="status_penerimaan" id="status_penerimaan">
-            <option value="1" {{ $status_penerimaan_worker->status_penerimaan ? 'selected' : '' }}>Buka</option>
-            <option value="0" {{ !$status_penerimaan_worker->status_penerimaan ? 'selected' : '' }}>Tutup</option>
-        </select>
-        {{-- buat input deskripsinya --}}
-        <label for="deskripsi">Deskripsi:</label>
-        <input type="text" name="keterangan" class="w-96" value="{{ $status_penerimaan_worker->keterangan }}">
+        <div class="mb-4">
+            <label for="status_penerimaan" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Status Penerimaan:</label>
+            <select name="status_penerimaan" id="status_penerimaan" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                <option value="1" {{ $status_penerimaan_worker->status_penerimaan ? 'selected' : '' }}>Buka</option>
+                <option value="0" {{ !$status_penerimaan_worker->status_penerimaan ? 'selected' : '' }}>Tutup</option>
+            </select>
+        </div>
 
-        <button type="submit" class="border border-black p-3">Update</button>
+        <div class="mb-4">
+            <label for="deskripsi" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Deskripsi:</label>
+            <input type="text" name="keterangan" id="deskripsi" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" value="{{ $status_penerimaan_worker->keterangan }}">
+        </div>
+
+        <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:ring focus:ring-indigo-200 active:bg-indigo-600 disabled:opacity-25 transition">
+            Update
+        </button>
     </form>
 @endsection

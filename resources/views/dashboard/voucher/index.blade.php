@@ -3,8 +3,12 @@
 
 @section('content')
     <div class="flex flex-col">
-        <div class="flex justify-end"><a class="text-blue-600" href="{{ route('vouchers.create') }}">Tambah Voucher</a></div>
-        <div class="w-full mt-6">
+        <div class="flex justify-end mb-4">
+            <a class="text-blue-600 hover:underline px-4 py-2 bg-blue-100 rounded-md hover:bg-blue-200 transition duration-200"
+                href="{{ route('vouchers.create') }}">Tambah Voucher</a>
+        </div>
+
+        <div class="w-full mt-2">
             @if ($vouchers->count() > 0)
                 <div class="bg-white overflow-auto">
                     <table class="text-left w-full border-collapse">
@@ -41,19 +45,22 @@
                                     <td class="py-4 px-6 border-b border-grey-light">{{ $voucher->tanggal_berakhir }}</td>
                                     {{-- buatkan action --}}
                                     <td class="py-4 px-6 border-b border-grey-light">
-                                        <a href="{{ route('vouchers.edit', $voucher->kode_voucher) }}"
-                                            class="text-blue-600">Edit</a>
-                                        <form action="{{ route('vouchers.destroy', $voucher->kode_voucher) }}"
-                                            method="post" class="inline">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="text-red-600">Delete</button>
-                                        </form>
+                                        <div class="flex space-x-2">
+                                            <a href="{{ route('vouchers.edit', $voucher->kode_voucher) }}"
+                                                class="text-blue-600 hover:underline">Edit</a>
+                                            <a href="{{ route('vouchers.show', $voucher->kode_voucher) }}"
+                                                class="text-green-600 hover:underline">Show</a>
+                                            <form action="{{ route('vouchers.destroy', $voucher->kode_voucher) }}"
+                                                method="post" class="inline">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="text-red-600 hover:underline">Delete</button>
+                                            </form>
+                                        </div>
                                     </td>
+
                                 </tr>
                             @endforeach
-
-
                         </tbody>
                     </table>
 

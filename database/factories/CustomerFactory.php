@@ -2,28 +2,32 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
+use App\Models\Customer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Pengguna>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class PenggunaFactory extends Factory
+class CustomerFactory extends Factory
 {
     /**
      * Define the model's default state.
      *
      * @return array<string, mixed>
      */
+
+    protected $model = Customer::class;
     public function definition(): array
     {
         return [
-            'username' => $this->faker->userName(),
+            'login_id' => function () {
+                return User::factory()->create()->id;
+            },
             'nama' => $this->faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
-            'password' => $this->faker->password(),
             'no_hp' => $this->faker->phoneNumber(),
+            'foto_profil' => $this->faker->imageUrl(),
             'alamat' => $this->faker->address(),
-            // 'foto_profil' => $this->faker->imageUrl(),
             'jenis_kelamin' => $this->faker->randomElement(['Laki-laki', 'Perempuan']),
         ];
     }
