@@ -9,12 +9,12 @@
     <title>{{ $title }} | onbann</title>
 </head>
 <body>
-    @include('partial.header-worker')
-
-    <div class="container px-4">
-        @yield('content')
+    <div class="flex flex-col justify-between min-h-screen">
+        @include('partial.header-worker')
+        <div class="container px-4 bg-blue-300">
+            @yield('content')
+        </div>
+        @include('partial.footer-worker')
     </div>
-
-    @include('partial.footer-worker')
 </body>
 </html>
