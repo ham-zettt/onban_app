@@ -17,14 +17,14 @@
     <div class="border-4 border-primary rounded-lg py-4 px-5 shadow-2xl">
         <div class="flex justify-between">
             <div class="flex flex-col justify-center">
-                <p class="text-lg font-bold leading-6">Total Pendapatan</p>
+                <p class="text-lg text-gray-800 font-bold leading-6">Total Pendapatan</p>
                 <p class="text-xs">1 Mei - 30 Mei 2024</p>
                 <h1 class="text-2xl text-primary font-bold">Rp100.000</h1>
             </div>
             <div class="">
                 <p class="text-center">Status Work</p>
                 <div class="border-2 border-gray-500 rounded-lg p-3 mx-3 space-y-3 flex flex-col">
-                    <p class="text-center font-bold leading-4">Terima Orderan?</p>
+                    <p class="text-center font-bold leading-4 text-gray-800">Terima Orderan?</p>
                     <input type="checkbox" value="1" class="sr-only peer">
                     <label class="justify-center inline-flex items-center cursor-pointer">
                         <input type="checkbox" value="" class="sr-only peer">
@@ -42,7 +42,7 @@
 
     <div class="w-full max-w-md p-4 bg-white border border-gray-400 rounded-lg shadow">
         <div class="flex items-center justify-between mb-2">
-            <h5 class="text-xl font-bold text-gray-900">Daftar Pesanan</h5>
+            <h5 class="text-xl font-bold text-gray-800">Daftar Pesanan</h5>
     </div>
     <div class="flow-root h-40 overflow-y-auto">
         @if ($orders->isEmpty())

@@ -106,6 +106,13 @@ Route::prefix('worker')->group(function () {
     Route::middleware(['auth', 'is_worker'])->group(function () {
         Route::get("/home", WorkerHomeController::class)->name('worker-home');
         Route::get("/home", WorkerHomeController::class)->name('worker-home');
+        Route::get("/home/pendapatan", function(){
+            return view("worker/pendapatan", [
+                "title" => "Pendapatan",
+                "nama" => session('userData')->worker->nama,
+                "role" => session('userData')->role
+            ]);
+        })->name('worker-pendapatan');
     });
 
     // Route
