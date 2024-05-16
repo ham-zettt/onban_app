@@ -1,7 +1,7 @@
 @extends('layouts.user-layout')
 
 @section('content')
-    <div class="flex justify-center flex-col gap-10 lg:gap-14 md:gap-40 h-full">
+    <div class="flex justify-center flex-col gap-10 lg:gap-14 md:gap-40 py-10 h-full">
         <div id="foto_profile"
             class="mx-auto absolute w-40 h-40 top-28 left-1/2 right-1/2 translate-x-[-50%]  flex justify-center rounded-full">
             <div class="blur-md"></div>
