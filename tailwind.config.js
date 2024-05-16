@@ -14,6 +14,9 @@ export default {
                 "primary-dark": "#B75818",
                 secondary: "#231f1f",
             },
+            fontFamily: {
+                'poppins': 'Poppins'
+            }
         },
 
         container: {

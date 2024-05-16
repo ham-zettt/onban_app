@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\WorkerDashboardController;
 use App\Http\Controllers\Worker\WorkerRegisterController;
 use App\Http\Controllers\Admin\MetodePembayaranController;
 use App\Http\Controllers\Admin\StatusTerimaWorkerController;
+use App\Http\Controllers\OrderTestController;
 
 // Route Session untuk ngecek user pertama kali masuk
 Route::get('/', SessionController::class);
@@ -109,7 +110,6 @@ Route::prefix('worker')->group(function () {
 
     // Route
 });
-
 
 // Route Logout
 Route::get('/logout', LogoutController::class)->name('logout');
