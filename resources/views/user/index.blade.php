@@ -32,8 +32,10 @@
                     <p class="text-sm">Akun</p>
                 </div>
                 <div class="w-14  text-white  h-full  text-center flex flex-col justify-center ">
-                    <img class="w-3/4 h-3/4" src="{{ asset('assets/images/logout.svg') }}" alt="logout">
-                    <p class="text-sm">Logout</p>
+                    <a href="{{route('logout')}}" class="w-14  text-white  h-full  text-center flex flex-col justify-center ">
+                        <img class="w-3/4 h-3/4" src="{{ asset('assets/images/logout.svg') }}" alt="logout">
+                        <p class="text-sm">Logout</p>
+                    </a>
                 </div>
             </div>
         </div>
