@@ -9,7 +9,7 @@
 <body>
     <form action="{{ route('register-admin') }}" method="post">
         @csrf
-        nama : <input type="text" name="nama"><br>
+        nama : <input type="text" name="nama" autofocus><br>
         username : <input type="text" name="username"><br>
         email : <input type="email" name="email"><br>
         no_hp : <input type="tel" name="no_hp"><br>

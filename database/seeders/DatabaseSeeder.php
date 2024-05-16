@@ -22,10 +22,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // StatusPenerimaanWorker::create([
-        //     'status_penerimaan' => true,
-        //     'keterangan' => 'ditutup sampai 23 Mei 2024',
-        // ]);
+        StatusPenerimaanWorker::create([
+            'status_penerimaan' => true,
+            'keterangan' => 'ditutup sampai 23 Mei 2024',
+        ]);
 
         // MetodePembayaran::create([
         //     'nama_metode_pembayaran' => 'Bayar di Tempat',
@@ -50,7 +50,7 @@ class DatabaseSeeder extends Seeder
         //     'harga_tipe_layanan' => 50000,
         //     'foto_tipe_layanan' => 'sepeda.jpg',
         // ]);
-        Worker::factory()->count(10)->create();
+        Customer::factory()->count(50)->create();
 
 
 
