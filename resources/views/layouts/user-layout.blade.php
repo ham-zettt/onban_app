@@ -9,7 +9,12 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
+
+    <script src="{{asset('assets/sweetalert2/sweetalert2.all.min.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('assets/sweetalert2/sweetalert2.css')}}">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -31,6 +36,9 @@
     <div class="container px-4 ">
         @yield('content')
     </div>
+
+    @yield('js')
+
 </body>
 
 </html>
