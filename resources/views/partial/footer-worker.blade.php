@@ -15,7 +15,7 @@
             </div>
             <div class="">
                 <p>Icon</p>
-                <p>Logout</p>
+                <p><a href="{{ route('logout') }}">Logout</a></p>
             </div>
         </div>
     </div>

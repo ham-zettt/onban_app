@@ -2,7 +2,7 @@
 
 @section('content')
     {{-- Main Card --}}
-    <div class="border-2 border-primary rounded-lg p-4">
+    {{-- <div class="border-2 border-primary rounded-lg p-4">
         <div class="flex justify-between">
             <div class="">
                 <p class="text-2xl">Total<br> Pendapatan</p>
@@ -25,6 +25,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
+    <form action="">
+        <label for="status_menerima_order">Terima Orderan</label>
+        <input {{ $status_menerima_order ? "checked" : "checked" }} type="checkbox" name="status_menerima_order" id="">
+    </form>
 @endsection
-
