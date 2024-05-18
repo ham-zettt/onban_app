@@ -27,10 +27,10 @@ class DatabaseSeeder extends Seeder
             'keterangan' => 'ditutup sampai 23 Mei 2024',
         ]);
 
-        // MetodePembayaran::create([
-        //     'nama_metode_pembayaran' => 'Bayar di Tempat',
-        //     'deskripsi_metode_pembayaran' => 'Pembayaran dilakukan di tempat',
-        // ]);
+        MetodePembayaran::create([
+            'nama_metode_pembayaran' => 'Bayar di Tempat',
+            'deskripsi_metode_pembayaran' => 'Pembayaran dilakukan di tempat',
+        ]);
 
         // TipeLayanan::create([
         //     'nama_tipe_layanan' => 'Motor',
@@ -50,7 +50,7 @@ class DatabaseSeeder extends Seeder
         //     'harga_tipe_layanan' => 50000,
         //     'foto_tipe_layanan' => 'sepeda.jpg',
         // ]);
-        Customer::factory()->count(50)->create();
+        Worker::factory()->count(10)->create();
 
 
 

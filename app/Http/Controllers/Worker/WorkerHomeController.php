@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Worker;
 use App\Http\Controllers\Controller;
 use App\Models\Worker;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class WorkerHomeController extends Controller
 {
@@ -17,8 +18,9 @@ class WorkerHomeController extends Controller
         $status_menerima_order = Worker::findOrFail($id_worker)->status_menerima;
         return view('worker.index', [
             "title" => "Home",
-            "worker" => session('userData')->worker,
-            "status_menerima_order" => $status_menerima_order
+            "orders" => DB::table('order')->get(),
+            "role" => session('userData')->role,
+            "worker" => session('userData')->worker
         ]);
     }
 }

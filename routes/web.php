@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\WorkerDashboardController;
 use App\Http\Controllers\Worker\WorkerRegisterController;
 use App\Http\Controllers\Admin\MetodePembayaranController;
 use App\Http\Controllers\Admin\StatusTerimaWorkerController;
+use App\Http\Controllers\OrderTestController;
 
 // Route Session untuk ngecek user pertama kali masuk
 Route::get('/', SessionController::class);
@@ -105,11 +106,17 @@ Route::prefix('worker')->group(function () {
     Route::middleware(['auth', 'is_worker'])->group(function () {
         Route::get("/home", WorkerHomeController::class)->name('worker-home');
         Route::get("/home", WorkerHomeController::class)->name('worker-home');
+        Route::get("/home/pendapatan", function(){
+            return view("worker/pendapatan", [
+                "title" => "Pendapatan",
+                "nama" => session('userData')->worker->nama,
+                "role" => session('userData')->role
+            ]);
+        })->name('worker-pendapatan');
     });
 
     // Route
 });
-
 
 // Route Logout
 Route::get('/logout', LogoutController::class)->name('logout');
