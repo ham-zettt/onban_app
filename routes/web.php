@@ -59,6 +59,14 @@ Route::middleware(['auth', 'is_customer'])->group(function () {
             "role" => session('userData')->role
         ]);
     })->name('order-detail');
+
+    Route::get("/order/worker_find", function(){
+        return view("order-user/worker_find", [
+            "title" => "Worker Find",
+            "nama" => session('userData')->customer->nama,
+            "role" => session('userData')->role
+        ]);
+    })->name('worker-find');
 });
 
 // Route Admin
