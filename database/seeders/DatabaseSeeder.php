@@ -32,25 +32,29 @@ class DatabaseSeeder extends Seeder
             'deskripsi_metode_pembayaran' => 'Pembayaran dilakukan di tempat',
         ]);
 
-        TipeLayanan::create([
-            'nama_tipe_layanan' => 'Motor',
-            'deskripsi_tipe_layanan' => 'Gas tambal disini',
-            'harga_tipe_layanan' => 100000,
-            'foto_tipe_layanan' => 'motor.jpg',
-        ]);
-        TipeLayanan::create([
-            'nama_tipe_layanan' => 'Mobil',
-            'deskripsi_tipe_layanan' => 'Gas tambal disini',
-            'harga_tipe_layanan' => 200000,
-            'foto_tipe_layanan' => 'mobil.jpg',
-        ]);
-        TipeLayanan::create([
-            'nama_tipe_layanan' => 'Sepeda',
-            'deskripsi_tipe_layanan' => 'Gas tambal disini',
-            'harga_tipe_layanan' => 50000,
-            'foto_tipe_layanan' => 'sepeda.jpg',
-        ]);
-        User::factory()->count(1000)->create();
+        // TipeLayanan::create([
+        //     'nama_tipe_layanan' => 'Motor',
+        //     'deskripsi_tipe_layanan' => 'Gas tambal disini',
+        //     'harga_tipe_layanan' => 100000,
+        //     'foto_tipe_layanan' => 'motor.jpg',
+        // ]);
+        // TipeLayanan::create([
+        //     'nama_tipe_layanan' => 'Mobil',
+        //     'deskripsi_tipe_layanan' => 'Gas tambal disini',
+        //     'harga_tipe_layanan' => 200000,
+        //     'foto_tipe_layanan' => 'mobil.jpg',
+        // ]);
+        // TipeLayanan::create([
+        //     'nama_tipe_layanan' => 'Sepeda',
+        //     'deskripsi_tipe_layanan' => 'Gas tambal disini',
+        //     'harga_tipe_layanan' => 50000,
+        //     'foto_tipe_layanan' => 'sepeda.jpg',
+        // ]);
+        Worker::factory()->count(10)->create();
+
+
+
+
 
     }
 }
