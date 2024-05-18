@@ -45,14 +45,14 @@ Route::prefix('register')->group(function () {
 Route::middleware(['auth', 'is_customer'])->group(function () {
     Route::get("/home", HomeController::class)->name('home');
     // Route Order
-    Route::get("/order", function(){
+    Route::get("/order", function () {
         return view("order-user/order-pilih-kendaraan", [
             "title" => "Pilih Kendaraan",
             "nama" => session('userData')->customer->nama,
             "role" => session('userData')->role
         ]);
     })->name('order-pilih-kendaraan');
-    Route::get("/order/detail", function(){
+    Route::get("/order/detail", function () {
         return view("order-user/order-detail", [
             "title" => "Informasi Order",
             "nama" => session('userData')->customer->nama,
@@ -120,7 +120,3 @@ Route::prefix('worker')->group(function () {
 
 // Route Logout
 Route::get('/logout', LogoutController::class)->name('logout');
-
-
-
-
