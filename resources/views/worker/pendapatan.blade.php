@@ -13,7 +13,7 @@
 </div> --}}
 
 
-<div class="p-4 text-center bg-orange-100 shadow">
+<div class="p-4 text-center bg-orange-100 shadow-lg">
     <p class="text-md font-bold text-gray-800">Pendapatan Bulan Ini</p>
     <p class="text-sm font-normal text-gray-500 dark:text-gray-400 pb-2">1 Mei 2024 - 31 Mei 2024</p>
     <p class="text-3xl font-bold text-primary-dark dark:text-white pb-2">Rp80.000</p>
