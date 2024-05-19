@@ -6,6 +6,10 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "andreiio/blade-remix-icon": "*",
+        "attrixtech/laravel-icons": "^1.2",
+        "blade-ui-kit/blade-icons": "^1.6",
+        "blade-ui-kit/blade-ui-kit": "^0.6.2",
         "itsgoingd/clockwork": "^5.2",
         "laravel/framework": "^11.0",
         "laravel/tinker": "^2.9"

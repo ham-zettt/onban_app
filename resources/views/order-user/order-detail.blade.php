@@ -1,7 +1,7 @@
 @extends('layouts.user-layout')
 @section('content')
     <img src="{{ asset('assets/images/motor.svg')}}" alt="kendaraan" class="absolute top-28 left-20 md:left-1/2 lg:right-1/2 lg:translate-x-[-50%]">
-    <div class="bg-primary rounded-lg px-8 py-4 mx-4 mt-10 md:w-3/4 md:mx-auto lg:w-1/3` lg:mx-auto">
+    <div class="bg-primary rounded-lg px-8 py-4 mx-4 mt-10 md:w-3/4 md:mx-auto lg:w-1/3 lg:mx-auto">
         <p class="text-2xl text-white font-bold text-center">Informasi Order</p>
         <div class="flex justify-between text-lg py-4">
             <div class="text-orange-300">
@@ -33,7 +33,7 @@
             </form>
         </div>
         <div class="flex flex-col gap-4 md:gap-6 md:w-2/3 md:mx-auto lg:w-1/3">
-            <a href="#" class="bg-white border-4 border-primary text-primary mx-16 p-2 rounded-lg hover:text-orange-400 hover:border-orange-400">Konfirmasi</a>
+            <a href="{{route('worker-find')}}" class="bg-white border-4 border-primary text-primary mx-16 p-2 rounded-lg hover:text-orange-400 hover:border-orange-400">Konfirmasi</a>
             <a href="{{route('order-pilih-kendaraan')}}" class="bg-primary text-white mx-16 p-2 rounded-lg hover:bg-orange-400">kembali</a>
         </div>
     </div>
