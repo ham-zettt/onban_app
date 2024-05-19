@@ -1,13 +1,19 @@
 @extends('layouts.dashboard-layout')
-
-
+@php
+    $nomor_urut = ($semuaWorker->currentPage() - 1) * $semuaWorker->perPage();
+@endphp
 @section('content')
     <div class="w-full mt-6">
         @if ($semuaWorker->count() > 0)
+  
             <div class="bg-white overflow-auto">
                 <table class="min-w-full leading-normal">
                     <thead>
                         <tr>
+                            <th
+                                class="px-5 py-3 border-b-2 border-gray-200 bg-white text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                No
+                            </th>
                             <th
                                 class="px-5 py-3 border-b-2 border-gray-200 bg-white text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                 Nama
@@ -36,7 +42,13 @@
                     </thead>
                     <tbody>
                         @foreach ($semuaWorker as $worker)
+                            @php
+                                $nomor_urut++;
+                            @endphp     
                             <tr>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    <p class="text-gray-900 whitespace-no-wrap">{{ $nomor_urut }}</p>
+                                </td>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <div class="flex items-center">
                                         <div class="flex-shrink-0 w-10 h-10">
@@ -86,6 +98,7 @@
                     </tbody>
                 </table>
             </div>
+            {{ $semuaWorker->links() }}
         @else
             <h1 class="text-center font-bold text-md">MASIH BELUN ADA WORKER</h1>
         @endif

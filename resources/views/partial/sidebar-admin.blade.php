@@ -12,7 +12,7 @@
         </a>
         <a href="{{ route('admin-users') }}" class="flex items-center  {{ Request::is('admin/users') ? 'active-nav-link' : ''  }} text-white py-4 pl-6 nav-item">
             <i class="fas fa-sticky-note mr-3"></i>
-            User
+            Customer
         </a>
         <a href="{{ route('admin-workers') }}" class="flex items-center {{ Request::is('admin/workers*') ? 'active-nav-link' : '' }} text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
             <i class="fas fa-table mr-3"></i>
@@ -22,10 +22,13 @@
             <i class="fas fa-align-left mr-3"></i>
             Voucher
         </a>
-
+        {{-- <a href="{{ route('metode-pembayaran.index') }}" class="flex items-center {{ Request::is('admin/metode_pembayaran*') ? 'active-nav-link' : '' }} text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+            <i class="fas fa-align-left mr-3"></i>
+            Metode Pembayaran
+        </a> --}}
+        <a href="{{ route('tipe-layanan.index') }}" class="flex items-center {{ Request::is('admin/tipe-layanan*') ? 'active-nav-link' : '' }} text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+            <i class="fas fa-align-left mr-3"></i>
+            Tipe Layanan
+        </a>
     </nav>
-    <a href="#" class="absolute w-full upgrade-btn bottom-0 active-nav-link text-white flex items-center justify-center py-4">
-        <i class="fas fa-arrow-circle-up mr-3"></i>
-        Upgrade to Pro!
-    </a>
 </aside>

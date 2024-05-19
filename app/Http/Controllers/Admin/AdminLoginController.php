@@ -36,6 +36,6 @@ class AdminLoginController extends Controller
                 return back()->with('error', 'Hanya Admin yang dapat login di sini!');
             }
         }
-        return back()->with('error', 'Login Gagal! Silahkan cek username dan password anda!');
+        return back()->with('error', 'Login Gagal! Password atau Username salah!');
     }
 }
