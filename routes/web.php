@@ -2,10 +2,12 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\SessionControllerAdmin;
+use App\Http\Controllers\Admin\VoucherController;
 use App\Http\Controllers\User\UserLoginController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\User\UserRegisterController;
@@ -14,11 +16,10 @@ use App\Http\Controllers\Worker\WorkerLoginController;
 use App\Http\Controllers\Admin\AdminRegisterController;
 use App\Http\Controllers\Admin\UserDashboardController;
 use App\Http\Controllers\Admin\AdminDashboardController;
-use App\Http\Controllers\Admin\StatusTerimaWorkerController;
-use App\Http\Controllers\Admin\VoucherController;
 use App\Http\Controllers\Admin\WorkerDashboardController;
-use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Worker\WorkerRegisterController;
+use App\Http\Controllers\Admin\StatusTerimaWorkerController;
+use App\Http\Controllers\AppGuide\AppGuideController;
 
 // Route Session untuk ngecek user pertama kali masuk
 Route::get('/', SessionController::class);
@@ -43,7 +44,7 @@ Route::middleware(['auth', 'is_customer'])->group(function () {
     Route::get("/home", HomeController::class)->name('home');
     // Route Order
     Route::get("/order", [OrderController::class, 'index'])->name('order-pilih-kendaraan');
-    Route::get("/order/detail", function(){
+    Route::get("/order/detail", function () {
         return view("order-user/order-detail", [
             "title" => "Informasi Order",
             "nama" => session('userData')->customer->nama,
@@ -96,10 +97,16 @@ Route::prefix('worker')->group(function () {
     // Route
 });
 
+// Route AppGuide
+Route::prefix('/help')->group(function () {
+    Route::get('/user', [AppGuideController::class, 'indexuser'])->name('user-help');
+    Route::get('/user/{category}', [AppGuideController::class, 'indexguidepanduan'])->name('panduan');
+
+    Route::prefix('/worker')->group(function () {
+        Route::get('/', [AppGuideController::class, 'indexworker'])->name('worker-help');
+    });
+});
+
 
 // Route Logout
 Route::get('/logout', LogoutController::class)->name('logout');
-
-
-
-

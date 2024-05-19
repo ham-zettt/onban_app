@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminLoginController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         return view('login.login-admin', [
             "title" => "Login"
         ]);
