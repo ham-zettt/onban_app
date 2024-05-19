@@ -45,15 +45,15 @@ Route::prefix('register')->group(function () {
 Route::middleware(['auth', 'is_customer'])->group(function () {
     Route::get("/home", HomeController::class)->name('home');
     // Route Order
-    Route::get("/order", function () {
-        return view("order-user/order-pilih-kendaraan", [
+    Route::get("/order/order-choose-vehicle", function () {
+        return view("user.order.order-choose-vehicle", [
             "title" => "Pilih Kendaraan",
             "nama" => session('userData')->customer->nama,
             "role" => session('userData')->role
         ]);
-    })->name('order-pilih-kendaraan');
-    Route::get("/order/detail", function () {
-        return view("order-user/order-detail", [
+    })->name('order-choose-vehicle');
+    Route::get("/order/order-detail", function () {
+        return view("user.order.order-detail", [
             "title" => "Informasi Order",
             "nama" => session('userData')->customer->nama,
             "role" => session('userData')->role
@@ -61,19 +61,26 @@ Route::middleware(['auth', 'is_customer'])->group(function () {
     })->name('order-detail');
 
     Route::get("/order/worker_find", function(){
-        return view("order-user/worker_find", [
+        return view("user.order.worker_find", [
             "title" => "Worker Find",
             "nama" => session('userData')->customer->nama,
             "role" => session('userData')->role
         ]);
     })->name('worker-find');
     Route::get("/user/voucher", function(){
-        return view("user/voucher", [
-            "title" => "Voucher",
+        return view("user.voucher", [
+            "title" => "voucher",
             "nama" => session('userData')->customer->nama,
             "role" => session('userData')->role
         ]);
-    })->name('Voucher');
+    })->name('voucher');
+    Route::get("/user/account", function(){
+        return view("user.account", [
+            "title" => "account",
+            "nama" => session('userData')->customer->nama,
+            "role" => session('userData')->role
+        ]);
+    })->name('account');
 });
 
 // Route Admin
