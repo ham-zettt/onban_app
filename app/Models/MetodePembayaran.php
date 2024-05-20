@@ -16,4 +16,8 @@ class MetodePembayaran extends Model
         'nama_metode_pembayaran',
         'deskripsi_metode_pembayaran',
     ];
+
+    public function order(){
+        return $this->hasMany(Pesanan::class, 'metode_pembayaran_id');
+    }
 }

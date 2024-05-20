@@ -12,13 +12,18 @@ use App\Http\Controllers\User\UserLoginController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\TipeLayananController;
 use App\Http\Controllers\User\UserRegisterController;
-use App\Http\Controllers\Worker\WorkerHomeController;
+
+use App\Http\Controllers\Worker\WorkerRegisterController;
 use App\Http\Controllers\Worker\WorkerLoginController;
+use App\Http\Controllers\Worker\WorkerHomeController;
+use App\Http\Controllers\Worker\WorkerOrderController;
+use App\Http\Controllers\Worker\WorkerPendapatanController;
+use App\Http\Controllers\Worker\WorkerUlasanController;
+
 use App\Http\Controllers\Admin\AdminRegisterController;
 use App\Http\Controllers\Admin\UserDashboardController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\WorkerDashboardController;
-use App\Http\Controllers\Worker\WorkerRegisterController;
 use App\Http\Controllers\Admin\MetodePembayaranController;
 use App\Http\Controllers\Admin\StatusTerimaWorkerController;
 use App\Http\Controllers\OrderTestController;
@@ -121,13 +126,9 @@ Route::prefix('worker')->group(function () {
     Route::middleware(['auth', 'is_worker'])->group(function () {
         Route::get("/home", WorkerHomeController::class)->name('worker-home');
         Route::get("/home", WorkerHomeController::class)->name('worker-home');
-        Route::get("/home/pendapatan", function(){
-            return view("worker/pendapatan", [
-                "title" => "Pendapatan",
-                "nama" => session('userData')->worker->nama,
-                "role" => session('userData')->role
-            ]);
-        })->name('worker-pendapatan');
+        Route::get("/home/pendapatan", WorkerPendapatanController::class)->name('worker-pendapatan');
+        Route::get("/home/ulasan", WorkerUlasanController::class)->name('worker-ulasan');
+        Route::get("/order/{id_order}", [WorkerOrderController::class, 'show'])->name('worker-order');
     });
 
     // Route
