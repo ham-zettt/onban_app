@@ -23,7 +23,7 @@
 
         {{-- navigation bar --}}
 
-        <div class=" w-full md:w-3/4 mt-4 bg-[#FF802A] h-16 flex justify-center mx-auto my-auto content-center rounded-lg drop-shadow-lg lg:w-2/5 sticky bottom-10"
+        <div class=" w-full md:w-2/4 mt-4 bg-[#FF802A] h-16 flex justify-center mx-auto my-auto content-center rounded-lg drop-shadow-lg lg:w-2/5 sticky bottom-10"
             id='footbar'>
             <div class="flex w-full h-2/3 justify-center mx-auto content-center lg:gap-32 gap-20 my-auto">
                 <div class="w-14  text-white  h-full  text-center flex flex-col justify-center ">
@@ -32,17 +32,19 @@
                         <p class="text-sm">Voucher</p>
                     </a>
                 </div>
-                <a href="{{route('account')}}" class="w-auto  text-white  h-3/4 my-auto  text-center flex flex-col justify-center  ">
+                <a href="{{ route('account') }}"
+                    class="w-auto  text-white  h-3/4 my-auto  text-center flex flex-col justify-center  ">
                     <img src="{{ asset('assets/images/alvan-nee-ZCHj_2lJP00-unsplash.jpg') }}" alt=""
                         class=" w-full h-full rounded-full">
                     <p class="text-sm">Akun</p>
                 </a>
-                <div  class="w-14  text-white  h-full  text-center flex flex-col justify-center">
-                    <div  
+                <div class="w-14  text-white  h-full  text-center flex flex-col justify-center ">
+                    <a href="{{ route('logout') }}" id="logout"
                         class="w-14 text-white  h-full  text-center flex flex-col justify-center ">
-                        <img class="w-3/4 h-3/4" src="{{ asset('assets/images/logout.svg') }}" alt="logout">
-                        <a href="{{route('logout')}}" id="logout" class="text-sm">Logout</a>
-                    </div>
+                        <img class="w-3/4 h-3/4" src="{{ asset('assets/images/logout.svg') }}" id="imgLogout"
+                            alt="logout">
+                        <p class="text-sm">Logout</p>
+                    </a>
                 </div>
             </div>
         </div>
@@ -67,21 +69,22 @@
 
         // pop up when logout
         document.getElementById('logout').addEventListener('click', function(event) {
-        event.preventDefault(); 
+            event.preventDefault();
+            const hrefValue = event.currentTarget.href;
+            Swal.fire({
+                title: 'Logout?',
+                text: 'Apakah Anda yakin ingin logout?',
+                icon: 'warning',
+                showCancelButton: true,
+                dangerMode: true,
+                confirmButtonText: 'Ya!',
+                cancelButtonText: 'Tidak'
+            }).then((result) => {
+                if (result.isConfirmed) {
 
-        Swal.fire({
-            title: 'Logout?',
-            text: 'Apakah Anda yakin ingin logout?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'ya!',
-            cancelButtonText: 'tidak'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = event.target.href;
-            }
-
+                    window.location.href = hrefValue;
+                }
+            });
         });
-    });
     </script>
 @endsection

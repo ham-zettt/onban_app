@@ -9,7 +9,7 @@
                 <i class="fi fi-rr-chart-histogram"></i>
                 <p>Pendapatan</p>
             </a>
-            <a href="{{ route('worker-ulasan') }}" class="hover:bg-primary-dark p-3 rounded-lg {{ request()->routeIs('worker-ulasan') ? 'font-bold text-orange-900' : '' }}">
+            <a href="{{ route('worker-home') }}" class="hover:bg-primary-dark p-3 rounded-lg {{ request()->routeIs('worker-ulasan') ? 'font-bold text-orange-900' : '' }}">
                 <i class="fi fi-rr-comment-alt text-lg"></i>
                 <p>Ulasan</p>
             </a>
