@@ -1,4 +1,4 @@
-<footer>
+<footer class="sticky bottom-0">
     <div class="max-w-screen mx-7 m-5 text-center bg-primary rounded-lg shadow">
         <div class="flex justify-between items-center text-white text-sm">
             <a href="{{ route('worker-home') }}" class="hover:bg-primary-dark p-3 pl-5 rounded-lg {{ request()->routeIs('worker-home') ? 'font-bold text-orange-900' : '' }}">
@@ -9,7 +9,7 @@
                 <i class="fi fi-rr-chart-histogram"></i>
                 <p>Pendapatan</p>
             </a>
-            <a href="" class="hover:bg-primary-dark p-3 rounded-lg {{ request()->routeIs('worker-ulasan') ? 'font-bold text-orange-900' : '' }}">
+            <a href="{{ route('worker-home') }}" class="hover:bg-primary-dark p-3 rounded-lg {{ request()->routeIs('worker-ulasan') ? 'font-bold text-orange-900' : '' }}">
                 <i class="fi fi-rr-comment-alt text-lg"></i>
                 <p>Ulasan</p>
             </a>
