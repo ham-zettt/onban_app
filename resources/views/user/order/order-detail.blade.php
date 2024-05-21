@@ -33,7 +33,7 @@
             </form>
         </div>
         <div class="flex flex-col gap-4 md:gap-6 md:w-2/3 md:mx-auto lg:w-1/3">
-            <a href="{{route('worker-find')}}" class="bg-white border-4 border-primary text-primary mx-16 p-2 rounded-lg hover:text-orange-400 hover:border-orange-400">Konfirmasi</a>
+            <a href="{{route('home')}} " class="bg-white border-4 border-primary text-primary mx-16 p-2 rounded-lg hover:text-orange-400 hover:border-orange-400">Konfirmasi</a>
             <a href="{{route('order-choose-vehicle')}}" class="bg-primary text-white mx-16 p-2 rounded-lg hover:bg-orange-400">kembali</a>
         </div>
     </div>

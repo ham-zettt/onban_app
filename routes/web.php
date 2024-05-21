@@ -59,7 +59,7 @@ Route::middleware(['auth', 'is_customer'])->group(function () {
     Route::get("/order/order-detail",[UserOrderDetailController::class, "index"] )->name('order-detail');
     Route::get("/order/find-worker", FindWorkerController::class)->name('worker-find');
     Route::get("/user/vouchers", [UserVoucherController::class, "index"])->name('voucher');
-    Route::get("/user/profile", [UserProfileController::class, "index"])->name('account');
+    Route::get("/user/profile", [UserProfileController::class, "index"])->name('profile');
 });
 
 // Route Admin
