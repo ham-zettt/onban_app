@@ -4,19 +4,15 @@ namespace App\Http\Controllers\Worker;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pesanan;
-use App\Models\Worker;
+use Illuminate\Http\Request;
 
-class WorkerHomeController extends Controller
+class WorkerPendapatanController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     */
     public function __invoke()
     {
-        $orders = Pesanan::with(['customer', 'tipe_layanan', 'metode_pembayaran'])->get();
         $id_worker = session('userData')->worker->id_worker;
-        $status_menerima_order = Worker::findOrFail($id_worker)->status_menerima;
-        return view('worker.index', [
+        $orders = Pesanan::where(['worker_id' => $id_worker, 'status_order' => 'Selesai'])->get();
+        return view('worker.pendapatan', [
             "title" => "Home",
             "orders" => $orders,
             "role" => session('userData')->role,

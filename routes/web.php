@@ -12,13 +12,18 @@ use App\Http\Controllers\User\UserLoginController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\TipeLayananController;
 use App\Http\Controllers\User\UserRegisterController;
-use App\Http\Controllers\Worker\WorkerHomeController;
+
+use App\Http\Controllers\Worker\WorkerRegisterController;
 use App\Http\Controllers\Worker\WorkerLoginController;
+use App\Http\Controllers\Worker\WorkerHomeController;
+use App\Http\Controllers\Worker\WorkerOrderController;
+use App\Http\Controllers\Worker\WorkerPendapatanController;
+use App\Http\Controllers\Worker\WorkerUlasanController;
+
 use App\Http\Controllers\Admin\AdminRegisterController;
 use App\Http\Controllers\Admin\UserDashboardController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\WorkerDashboardController;
-use App\Http\Controllers\Worker\WorkerRegisterController;
 use App\Http\Controllers\Admin\MetodePembayaranController;
 use App\Http\Controllers\Admin\StatusTerimaWorkerController;
 use App\Http\Controllers\OrderTestController;
@@ -45,15 +50,15 @@ Route::prefix('register')->group(function () {
 Route::middleware(['auth', 'is_customer'])->group(function () {
     Route::get("/home", HomeController::class)->name('home');
     // Route Order
-    Route::get("/order/pilih-kendaraan", function () {
-        return view("order-user/order-pilih-kendaraan", [
+    Route::get("/order/order-choose-vehicle", function () {
+        return view("user.order.order-choose-vehicle", [
             "title" => "Pilih Kendaraan",
             "nama" => session('userData')->customer->nama,
             "role" => session('userData')->role
         ]);
-    })->name('order-pilih-kendaraan');
-    Route::get("/order/detail", function () {
-        return view("order-user/order-detail", [
+    })->name('order-choose-vehicle');
+    Route::get("/order/order-detail", function () {
+        return view("user.order.order-detail", [
             "title" => "Informasi Order",
             "nama" => session('userData')->customer->nama,
             "role" => session('userData')->role
@@ -61,19 +66,26 @@ Route::middleware(['auth', 'is_customer'])->group(function () {
     })->name('order-detail');
 
     Route::get("/order/worker_find", function(){
-        return view("order-user/worker_find", [
+        return view("user.order.worker_find", [
             "title" => "Worker Find",
             "nama" => session('userData')->customer->nama,
             "role" => session('userData')->role
         ]);
     })->name('worker-find');
     Route::get("/user/voucher", function(){
-        return view("user/voucher", [
-            "title" => "Voucher",
+        return view("user.voucher", [
+            "title" => "voucher",
             "nama" => session('userData')->customer->nama,
             "role" => session('userData')->role
         ]);
-    })->name('Voucher');
+    })->name('voucher');
+    Route::get("/user/account", function(){
+        return view("user.account", [
+            "title" => "account",
+            "nama" => session('userData')->customer->nama,
+            "role" => session('userData')->role
+        ]);
+    })->name('account');
 });
 
 // Route Admin
@@ -121,13 +133,9 @@ Route::prefix('worker')->group(function () {
     Route::middleware(['auth', 'is_worker'])->group(function () {
         Route::get("/home", WorkerHomeController::class)->name('worker-home');
         Route::get("/home", WorkerHomeController::class)->name('worker-home');
-        Route::get("/home/pendapatan", function(){
-            return view("worker/pendapatan", [
-                "title" => "Pendapatan",
-                "nama" => session('userData')->worker->nama,
-                "role" => session('userData')->role
-            ]);
-        })->name('worker-pendapatan');
+        Route::get("/home/pendapatan", WorkerPendapatanController::class)->name('worker-pendapatan');
+        Route::get("/home/ulasan", WorkerUlasanController::class)->name('worker-ulasan');
+        Route::get("/order/{id_order}", [WorkerOrderController::class, 'show'])->name('worker-order');
     });
 
     // Route
