@@ -62,7 +62,8 @@ Route::middleware(['auth', 'is_customer'])->group(function () {
     Route::get("/order/find-worker", FindWorkerController::class)->name('worker-find');
     Route::get("/user/vouchers", [UserVoucherController::class, "index"])->name('voucher');
     Route::get("/user/profile", [UserProfileController::class, "index"])->name('profile');
-    Route::get("/user/userChat", [UserChatController::class, "index"])->name("chat");
+    Route::get("/user/userChat", [UserChatController::class, "index"])->name('userChat');
+
 });
 
 // Route Admin
