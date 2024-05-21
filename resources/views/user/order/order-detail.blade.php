@@ -20,10 +20,9 @@
 
     <div class="flex flex-col text-center py-8 md:py-10 space-y-4 md:gap-10 font-bold ">
         <div x-data="{ open: false }" class="md:gap-4">
-            <div x-on:click="open = ! open" class="border-primary w-3/4 md:w-96 flex gap-6 p-4 justify-between rounded-md mx-auto h-10 border-2 text-center content-center">
-                <a href="#" class="text-primary content-center ">Gunakan Voucher</a>
-                <img src="{{asset('assets/images/downArrow.svg')}}" alt="arrow">
-              
+            <div x-on:click="open = ! open" class="border-primary w-3/4 md:w-96 flex gap-6 p-4 justify-between rounded-md mx-auto h-10 border-2  text-center content-center  hover:border-orange-400">
+                <a href="#" class="text-primary content-center md:content-center flex flex- items-center justify-center text-sm  lg:content-center hover:text-orange-400">Gunakan Voucher</a>
+                <img src="{{asset('assets/images/downArrow.svg')}}" alt="arrow" class="">
             </div>
             <form x-show="open" x-transition class="flex flex-col  mx-auto">
                 <input type="submit" value="potongan harga 5%" class=" text-primary border-gray-500 w-3/4 md:w-96 hover:text-orange-400  mx-auto h-10 border-b-2 text-center content-center">
