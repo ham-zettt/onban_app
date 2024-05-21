@@ -27,6 +27,11 @@ use App\Http\Controllers\Admin\WorkerDashboardController;
 use App\Http\Controllers\Admin\MetodePembayaranController;
 use App\Http\Controllers\Admin\StatusTerimaWorkerController;
 use App\Http\Controllers\OrderTestController;
+use App\Http\Controllers\User\Order\ChooseVehicleController;
+use App\Http\Controllers\User\Order\FindWorkerController;
+use App\Http\Controllers\User\Order\UserOrderDetailController;
+use App\Http\Controllers\User\UserProfileController;
+use App\Http\Controllers\User\UserVoucherController;
 
 // Route Session untuk ngecek user pertama kali masuk
 Route::get('/', SessionController::class);
@@ -50,42 +55,11 @@ Route::prefix('register')->group(function () {
 Route::middleware(['auth', 'is_customer'])->group(function () {
     Route::get("/home", HomeController::class)->name('home');
     // Route Order
-    Route::get("/order/order-choose-vehicle", function () {
-        return view("user.order.order-choose-vehicle", [
-            "title" => "Pilih Kendaraan",
-            "nama" => session('userData')->customer->nama,
-            "role" => session('userData')->role
-        ]);
-    })->name('order-choose-vehicle');
-    Route::get("/order/order-detail", function () {
-        return view("user.order.order-detail", [
-            "title" => "Informasi Order",
-            "nama" => session('userData')->customer->nama,
-            "role" => session('userData')->role
-        ]);
-    })->name('order-detail');
-
-    Route::get("/order/worker_find", function(){
-        return view("user.order.worker_find", [
-            "title" => "Worker Find",
-            "nama" => session('userData')->customer->nama,
-            "role" => session('userData')->role
-        ]);
-    })->name('worker-find');
-    Route::get("/user/voucher", function(){
-        return view("user.voucher", [
-            "title" => "voucher",
-            "nama" => session('userData')->customer->nama,
-            "role" => session('userData')->role
-        ]);
-    })->name('voucher');
-    Route::get("/user/account", function(){
-        return view("user.account", [
-            "title" => "account",
-            "nama" => session('userData')->customer->nama,
-            "role" => session('userData')->role
-        ]);
-    })->name('account');
+    Route::get("/order/order-choose-vehicle", ChooseVehicleController::class)->name('order-choose-vehicle');
+    Route::get("/order/order-detail",[UserOrderDetailController::class, "index"] )->name('order-detail');
+    Route::get("/order/find-worker", FindWorkerController::class)->name('worker-find');
+    Route::get("/user/vouchers", [UserVoucherController::class, "index"])->name('voucher');
+    Route::get("/user/profile", [UserProfileController::class, "index"])->name('account');
 });
 
 // Route Admin
