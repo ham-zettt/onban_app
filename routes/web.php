@@ -32,6 +32,7 @@ use App\Http\Controllers\User\Order\FindWorkerController;
 use App\Http\Controllers\User\Order\UserOrderDetailController;
 use App\Http\Controllers\User\UserProfileController;
 use App\Http\Controllers\User\UserVoucherController;
+use App\Http\Controllers\Worker\WorkerUpdateStatusOrder;
 
 // Route Session untuk ngecek user pertama kali masuk
 Route::get('/', SessionController::class);
@@ -79,6 +80,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/users', [UserDashboardController::class, "index"])->name('admin-users');
         Route::get('/users/{id}/show', [UserDashboardController::class, "show"])->name('admin-users-show');
         // dashboard worker
+
         Route::get('/workers', [WorkerDashboardController::class, "index"])->name('admin-workers');
         Route::get('/workers/{id}/show', [WorkerDashboardController::class, "show"])->name('admin-workers-show');
         Route::get('/workers/{id}/delete', [WorkerDashboardController::class, "destroy"])->name('admin-workers-delete');
@@ -91,6 +93,9 @@ Route::prefix('admin')->group(function () {
         Route::resource('/metode-pembayaran', MetodePembayaranController::class);
         // Route Tipe Layanan
         Route::resource('/tipe-layanan', TipeLayananController::class);
+        // Route untuk mengubah status penerimaan worker
+
+        // Route::put('/status-terima-worker/{id}', [StatusTerimaWorkerController::class, 'updateStatus'])->name('status-terima-worker');
     });
 });
 
@@ -110,6 +115,7 @@ Route::prefix('worker')->group(function () {
         Route::get("/home/pendapatan", WorkerPendapatanController::class)->name('worker-pendapatan');
         Route::get("/home/ulasan", WorkerUlasanController::class)->name('worker-ulasan');
         Route::get("/order/{id_order}", [WorkerOrderController::class, 'show'])->name('worker-order');
+        Route::post("/status-terima-order/{idWorker}", [WorkerUpdateStatusOrder::class, "updateStatus"])->name('status-terima-order');
     });
 
     // Route

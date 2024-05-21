@@ -81,7 +81,6 @@
                 cancelButtonText: 'Tidak'
             }).then((result) => {
                 if (result.isConfirmed) {
-
                     window.location.href = hrefValue;
                 }
             });
