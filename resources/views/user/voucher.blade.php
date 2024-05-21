@@ -3,7 +3,7 @@
     <h1
         class="text-center text-2xl font-bold text-white mx-auto absolute w-3/4 h-40 top-28 left-1/2 right-1/2 translate-x-[-50%] ">
         Voucher </h1>
-    <div class="flex-col flex gap-3 lg:w-2/3  lg:mx-auto">
+    <div class="flex-col flex gap-3 lg:w-2/3  lg:mx-auto mb-9">
         <div class="w-full bg-white rounded-lg 800 h-full flex flex-col text-sm shadow-lg" x-data="{ open: false }">
             <div x-on:click="open = ! open" class="lg:gap-52 w-full flex md:gap-36 md:p-4 ">
                 <div class="flex flex-col w-1/2 p-2  rounded-md ">

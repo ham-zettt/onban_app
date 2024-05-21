@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ asset('assets/images/onban-icon.png') }}" type="image/png">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +14,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>{{ $title }} | onbann</title>
 </head>
-<body class="font-poppins">
+<body data-worker-id="{{ $worker->id_worker }}" class="font-poppins">
     <div class="flex flex-col justify-between min-h-screen">
         @include('partial.header-worker')
         <div class="container px-7 space-y-6">
@@ -22,5 +22,6 @@
         </div>
         @include('partial.footer-worker')
     </div>
+    @yield("js")
 </body>
 </html>
