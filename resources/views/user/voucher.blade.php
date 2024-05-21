@@ -147,7 +147,7 @@
                     <p class="text-sm">Voucher</p>
                 </a>
             </div>
-            <a href="{{ route('account') }}"
+            <a href="{{ route('profile') }}"
                 class="w-auto  text-white  h-3/4 my-auto  text-center flex flex-col justify-center  ">
                 <img src="{{ asset('assets/images/alvan-nee-ZCHj_2lJP00-unsplash.jpg') }}" alt=""
                     class=" w-full h-full rounded-full">

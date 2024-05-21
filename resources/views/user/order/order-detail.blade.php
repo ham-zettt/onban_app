@@ -33,9 +33,33 @@
             </form>
         </div>
         <div class="flex flex-col gap-4 md:gap-6 md:w-2/3 md:mx-auto lg:w-1/3">
-            <a href="{{route('worker-find')}}" class="bg-white border-4 border-primary text-primary mx-16 p-2 rounded-lg hover:text-orange-400 hover:border-orange-400">Konfirmasi</a>
+            <a href="{{route('worker-find')}}" id="confirmOrder" class="bg-white border-4 border-primary text-primary mx-16 p-2 rounded-lg hover:text-orange-400 hover:border-orange-400">Konfirmasi</a>
             <a href="{{route('order-choose-vehicle')}}" class="bg-primary text-white mx-16 p-2 rounded-lg hover:bg-orange-400">kembali</a>
         </div>
     </div>
     
+@endsection
+@section('js')
+
+<script>
+     // pop up when logout
+     document.getElementById('confirmOrder').addEventListener('click', function(event) {
+            event.preventDefault();
+            const hrefValue = event.currentTarget.href;
+            Swal.fire({
+                title: 'Pesanan',
+                text: 'Apakah pesanan anda sudah benar?',
+                icon: 'warning',
+                showCancelButton: true,
+                dangerMode: true,
+                confirmButtonText: 'Ya!',
+                cancelButtonText: 'Tidak'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = hrefValue;
+                }
+            });
+        });
+</script>
+
 @endsection
