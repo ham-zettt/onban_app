@@ -8,17 +8,7 @@
                 width="600" height="350" style="border:1;" allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-        {{-- <div class="w-3/4 h-40 flex flex-col mt-72 mx-auto gap-2 ">
-            <div class="w-full h-1/4 flex gap-2">
-                <div class="bg-red-500 w-1/4 h-full rounded-lg"></div>
-                <div class="bg-red-900 w-1/4 h-full rounded-lg"></div>
-                <div class="bg-red-500 w-1/4 h-full rounded-lg"></div>
-                <div class="bg-red-900 w-1/4 h-full rounded-lg"></div>
-            </div>
-            <div class=" w-full rounded-lg h-3/4 flex bg-red-600">
-
-            </div>
-        </div> --}}
+      
         <div class="w-full mx-auto h-56 bg-primary mt-56 rounded-md flex flex-col flex-wrap lg:w-2/3 md:w-3/4">
             <div class="w-full h-3/4  flex lg:px-32">
                 <div class="w-20 rounded-full h-20">
@@ -40,7 +30,7 @@
                     <a href="{{route('userChat')}}" class="my-auto hover:text-gray-200 hover:border-gray-200 border-white border-2 mx-auto text-white p-1 rounded-md">Chat Worker</a>
                 </div>
                 <div class="flex justify-center content-center h-1/2">
-                    <a href="#" class="my-auto hover:text-orange-400 hover:bg-gray-200 bg-white hover:border-orange-400 border-primary border-2 mx-auto text-primary p-1 rounded-md">Pembayaran</a>
+                    <a href="{{route('payment-info')}}" class="my-auto hover:text-orange-400 hover:bg-gray-200 bg-white hover:border-orange-400 border-primary border-2 mx-auto text-primary p-1 rounded-md">Pembayaran</a>
                 </div>
             </div>
             

@@ -3,10 +3,9 @@
 @section('content')
     <div class="flex justify-center flex-col gap-10 lg:gap-14 md:gap-40 h-full">
         <div id="foto_profile"
-            class="mx-auto absolute w-40 h-40 top-28 left-1/2 right-1/2 translate-x-[-50%]  flex justify-center rounded-full">
-            <div class="blur-md"></div>
+            class="mx-auto absolute w-40 h-40 top-28 left-1/2 overflow-hidden right-1/2 translate-x-[-50%] border-white border-4 rounded-full">
             <img src="{{ asset('assets/images/alvan-nee-ZCHj_2lJP00-unsplash.jpg') }}" alt=""
-                class="object-cover h-30 w-40 max-h-30 max-w-40 rounded-full border-4 border-white border-b-2">
+                class="object-cover border-white border-b-2">
         </div>
         <div class="flex justify-center ">
             <h1 class="text-black text-4xl flex mt-20 "> {{ $nama }}</h1>
@@ -24,20 +23,28 @@
 
         <div class=" w-full md:w-2/4 mt-4 bg-[#FF802A] h-16 flex justify-center mx-auto my-auto content-center rounded-lg drop-shadow-lg lg:w-2/5 sticky bottom-10"
             id='footbar'>
-            <div class="flex w-full h-2/3 justify-center mx-auto content-center lg:gap-32 gap-20 my-auto">
-                <div class="w-14  text-white  h-full  text-center flex flex-col justify-center ">
+            <div class="flex w-full h-2/3 justify-center mx-auto content-center lg:gap-32 gap-20 my-auto ">
+                <div class="w-[35%]  text-white  h-full  text-center flex flex-col justify-center ">
                     <a href="{{ route('voucher') }}">
-                        <img class="w-2/3 mx-auto h-2/3" src="{{ asset('assets/images/voucher.svg') }}" alt="voucher">
+                        <img class="w-2/4 lg:w-1/3 mx-auto h-2/3" src="{{ asset('assets/images/voucher.svg') }}"
+                            alt="voucher">
                         <p class="text-sm">Voucher</p>
                     </a>
                 </div>
-                <a href="{{ route('profile') }}"
-                    class="w-auto  text-white  h-3/4 my-auto  text-center flex flex-col justify-center  ">
-                    <img src="{{ asset('assets/images/alvan-nee-ZCHj_2lJP00-unsplash.jpg') }}" alt=""
-                        class=" w-full h-full rounded-full">
-                    <p class="text-sm">Akun</p>
-                </a>
-                <div class="w-14  text-white  h-full  text-center flex flex-col justify-center ">
+                <div
+                    class="w-[30%] text-white h-full my-auto text-center flex flex-col justify-center mx-auto content-center ">
+                    <a href="{{ route('profile') }}" class="flex flex-col  mx-auto justify-center content-center">
+                        <div
+                            class="w-[60%] h-[50%] lg:w-[40%] lg:h-[46%] overflow-hidden mx-auto content-center justify-center rounded-full ">
+                            <img src="{{ asset('assets/images/alvan-nee-ZCHj_2lJP00-unsplash.jpg') }}" alt=""
+                                class=" object-cover mx-auto">
+                        </div>
+                        <div>
+                            <p class="text-sm">Akun</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="w-[35%]  text-white  h-full  text-center flex flex-col justify-center ">
                     <a href="{{ route('logout') }}" id="logout"
                         class="w-14 text-white  h-full  text-center flex flex-col justify-center ">
                         <img class="w-3/4 h-3/4" src="{{ asset('assets/images/logout.svg') }}" id="imgLogout"
@@ -47,7 +54,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 @endsection
 @section('js')
