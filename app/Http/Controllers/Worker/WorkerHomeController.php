@@ -22,7 +22,6 @@ class WorkerHomeController extends Controller
             "role" => session('userData')->role,
             "worker" => session('userData')->worker,
             "status_menerima_order" => $status_menerima_order
-
         ]);
     }
 }
