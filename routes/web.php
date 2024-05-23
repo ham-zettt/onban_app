@@ -30,6 +30,7 @@ use App\Http\Controllers\Worker\WorkerPendapatanController;
 use App\Http\Controllers\Admin\StatusTerimaWorkerController;
 use App\Http\Controllers\User\Order\ChooseVehicleController;
 use App\Http\Controllers\User\Order\KonfirmasiOrderController;
+use App\Http\Controllers\User\Order\PaymentInfoController;
 
 // Route Session untuk ngecek user pertama kali masuk
 Route::get('/', SessionController::class);
@@ -59,6 +60,7 @@ Route::middleware(['auth', 'is_customer'])->group(function () {
     Route::get("/user/vouchers", [UserVoucherController::class, "index"])->name('voucher');
     Route::get("/user/profile", [UserProfileController::class, "index"])->name('profile');
     Route::get("/user/userChat", [UserChatController::class, "index"])->name('userChat');
+    Route::get("/order/payment-info", [PaymentInfoController::class, "index"])->name('payment-info');
 
 });
 
