@@ -24,7 +24,7 @@
             <div class="flex flex-col justify-center">
                 <p class="text-lg text-gray-800 font-bold leading-6">Total Pendapatan</p>
                 <p class="text-xs">1 Mei - 30 Mei 2024</p>
-                <h1 class="text-2xl text-primary font-bold">Rp100.000</h1>
+                <h1 class="text-2xl text-primary font-bold">Rp{{ $orders->sum('total_harga') }}</h1>
             </div>
             <div class="">
                 <p class="text-center">Status Work</p>
@@ -57,6 +57,9 @@
             @else
                 <ul role="list" class="divide-y divide-gray-300">
                     @foreach ($orders as $order)
+                        @if ($status_menerima_order)
+
+                        @endif
                         <li class="py-3">
                             <div class="flex items-center">
                                 <div class="flex-1 min-w-0 ">
@@ -153,12 +156,9 @@
                                     <div
                                         class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
                                         @if ($order->status_order != 'Selesai')
-                                            <a href="{{ route('worker-order', ['id_order' => $order->id_order]) }}"><button
-                                                    data-modal-hide="default-modal-{{ $order->id_order }}" type="button"
-                                                    class="text-white bg-primary hover:bg-primary-dark focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Terima</button></a>
+                                            <a href="{{ route('worker-order', ['id_order' => $order->id_order]) }}"><button data-modal-hide="default-modal-{{ $order->id_order }}" type="button" class="text-white bg-primary hover:bg-primary-dark focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Terima</button></a>
                                         @endif
-                                        <button data-modal-hide="default-modal-{{ $order->id_order }}" type="button"
-                                            class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-orange-300 hover:bg-orange-300 focus:z-10 focus:ring-4 focus:ring-gray-100 ">Kembali</button>
+                                        <button data-modal-hide="default-modal-{{ $order->id_order }}" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-orange-300 hover:bg-orange-300 focus:z-10 focus:ring-4 focus:ring-gray-100 ">Kembali</button>
                                     </div>
                                 </div>
                             </div>

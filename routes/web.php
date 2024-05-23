@@ -109,10 +109,10 @@ Route::prefix('worker')->group(function () {
 
     Route::middleware(['auth', 'is_worker'])->group(function () {
         Route::get("/home", WorkerHomeController::class)->name('worker-home');
-        Route::get("/home", WorkerHomeController::class)->name('worker-home');
         Route::get("/home/pendapatan", WorkerPendapatanController::class)->name('worker-pendapatan');
         Route::get("/home/ulasan", WorkerUlasanController::class)->name('worker-ulasan');
         Route::get("/order/{id_order}", [WorkerOrderController::class, 'show'])->name('worker-order');
+        Route::get("/order/{id_order}/selesai", [WorkerOrderController::class, 'finishedOrder'])->name('worker-order-selesai');
         Route::post("/status-terima-order/{idWorker}", [WorkerUpdateStatusOrder::class, "updateStatus"])->name('status-terima-order');
     });
 

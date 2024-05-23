@@ -6,7 +6,7 @@
         allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     <div class="flex space-x-2">
         <p class="border border-gray-300 p-3 rounded-lg shadow">Sampai dalam waktu < 30 menit </p>
-                <p class="border border-gray-300 p-3 rounded-lg shadow">Estimasi Biaya: {{ $order->total_harga }} </p>
+        <p class="border border-gray-300 p-3 rounded-lg shadow">Estimasi Biaya: {{ $order->total_harga }} </p>
     </div>
     <p class="border border-gray-300 p-3 rounded-lg shadow">Lokasi User: {{ $order->alamat }}, {{ $order->catatan }}</p>
 @endsection
