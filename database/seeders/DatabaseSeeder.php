@@ -23,33 +23,33 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // StatusPenerimaanWorker::create([
-        //     'status_penerimaan' => true,
-        //     'keterangan' => 'ditutup sampai 23 Mei 2024',
-        // ]);
+        StatusPenerimaanWorker::create([
+            'status_penerimaan' => true,
+            'keterangan' => 'ditutup sampai 23 Mei 2024',
+        ]);
 
-        // TipeLayanan::create([
-        //     'nama_tipe_layanan' => 'Motor',
-        //     'deskripsi_tipe_layanan' => 'Motor',
-        //     'harga_tipe_layanan' => 10000,
-        //     'foto_tipe_layanan' => '/tipe-layanan/iJBRCQSCWQdfr5dIvKWDZ8y8e82aMUmt2zMDFRB5.png',
-        // ]);
-        // TipeLayanan::create([
-        //     'nama_tipe_layanan' => 'Sepeda',
-        //     'deskripsi_tipe_layanan' => 'Sepeda',
-        //     'harga_tipe_layanan' => 20000,
-        //     'foto_tipe_layanan' => '/tipe-layanan/l9ciVzfzK1PfP1cYeb18mNlFsGMUWeyaEf484eu4.png',
-        // ]);
-        // TipeLayanan::create([
-        //     'nama_tipe_layanan' => 'Mobil',
-        //     'deskripsi_tipe_layanan' => 'Mobil',
-        //     'harga_tipe_layanan' => 40000,
-        //     'foto_tipe_layanan' => '/tipe-layanan/eEedB75XeTrjXyOemmIpdSuWVynaTjCSB4z8EqYE.png',
-        // ]);
+        TipeLayanan::create([
+            'nama_tipe_layanan' => 'Motor',
+            'deskripsi_tipe_layanan' => 'Motor',
+            'harga_tipe_layanan' => 10000,
+            'foto_tipe_layanan' => '/tipe-layanan/iJBRCQSCWQdfr5dIvKWDZ8y8e82aMUmt2zMDFRB5.png',
+        ]);
+        TipeLayanan::create([
+            'nama_tipe_layanan' => 'Sepeda',
+            'deskripsi_tipe_layanan' => 'Sepeda',
+            'harga_tipe_layanan' => 20000,
+            'foto_tipe_layanan' => '/tipe-layanan/l9ciVzfzK1PfP1cYeb18mNlFsGMUWeyaEf484eu4.png',
+        ]);
+        TipeLayanan::create([
+            'nama_tipe_layanan' => 'Mobil',
+            'deskripsi_tipe_layanan' => 'Mobil',
+            'harga_tipe_layanan' => 40000,
+            'foto_tipe_layanan' => '/tipe-layanan/eEedB75XeTrjXyOemmIpdSuWVynaTjCSB4z8EqYE.png',
+        ]);
 
-        // Voucher::factory()->count(10)->create();
+        Voucher::factory()->count(10)->create();
         // ganti antara admin, customer, atau worker tapi salah dua harus di komen dulu
-        // Customer::factory()->count(10)->create();
+        Customer::factory()->count(10)->create();
         // Worker::factory()->count(1)->create();
         // Admin::factory()->count(1)->create();
 

@@ -26,7 +26,7 @@ class WorkerOrderController extends Controller
 
     public function finishedOrder($id_order)
     {
-        $order = Pesanan::with(['customer', 'tipe_layanan', 'metode_pembayaran'])->findOrFail($id_order);
+        $order = Pesanan::with(['customer', 'tipe_layanan'])->findOrFail($id_order);
         $order->status_order = 'Selesai';
         $order->save();
         return redirect()->route('worker-home');
