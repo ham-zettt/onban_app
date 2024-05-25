@@ -30,6 +30,7 @@ use App\Http\Controllers\Admin\MetodePembayaranController;
 use App\Http\Controllers\User\Order\PaymentInfoController;
 use App\Http\Controllers\Worker\WorkerPendapatanController;
 use App\Http\Controllers\Admin\StatusTerimaWorkerController;
+use App\Http\Controllers\AppGuide\AppGuideController;
 use App\Http\Controllers\User\Order\ChooseVehicleController;
 use App\Http\Controllers\User\Order\CancelUderOrderController;
 use App\Http\Controllers\User\Order\CancelUserOrderController;
@@ -127,6 +128,16 @@ Route::prefix('worker')->group(function () {
     });
 
     // Route
+});
+
+// Route AppGuide
+Route::prefix('/help')->group(function () {
+    Route::get('/user', [AppGuideController::class, 'indexuser'])->name('user-help');
+    Route::get('/user/{category}', [AppGuideController::class, 'indexguidepanduan'])->name('panduan');
+
+    Route::prefix('/worker')->group(function () {
+        Route::get('/', [AppGuideController::class, 'indexworker'])->name('worker-help');
+    });
 });
 
 // Route Logout
