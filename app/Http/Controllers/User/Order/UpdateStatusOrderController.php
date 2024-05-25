@@ -10,14 +10,20 @@ class UpdateStatusOrderController extends Controller
 {
     public function updateStatusAndPosition(Request $request)
     {
+        // ambil jam saat ini dan tanggal saat ini
+        $jam = date('H:i:s');
+        $tanggal = date('Y-m-d');
+
 
         $order = Pesanan::findOrFail($request->id_order);
-        $order->status_order = "Menunggu Order";
+        $order->status_order = $request->status_order;
+        $order->latitude = $request->latitude;
+        $order->longitude = $request->longitude;
+        $order->voucher_id = $request->voucher_id;
+        $order->waktu = $jam;
+        $order->tanggal = $tanggal;
         $order->alamat = $request->alamat;
-        $order->latitude = $request->lat;
-        $order->longitude = $request->long;
         $order->save();
-        return response()->json(['message' => 'Status updated successfully'], 200);
-        return redirect()->back()->with('success', 'Status order berhasil diperbarui.');
+        return redirect()->route('home')->with('success', 'Orderan berhasil di buat, tunggu Worker mengambil orderan anda.');
     }
 }

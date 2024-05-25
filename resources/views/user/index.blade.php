@@ -13,6 +13,9 @@
         <div class="flex justify-center text-center text-base md:text-xl">
             <p>Tambal Ban Online: Perbaikan Ban Langsung ke Lokasi Anda!</p>
         </div>
+        @if (session()->has('success'))
+            @include('partial.alert-success', ['message' => session()->get('success')])
+        @endif
         <div class="flex justify-center w-full h-16 md:h-20 lg:h-14 mt-14 ">
             <a href="{{ route('create-order') }}"
                 class="bg-[#FF802A] text-center lg:w-1/4 xl:w-1/4 md:w-1/2 w-3/4 h-full justify-center flex flex-col px-10 py-6 rounded-lg text-white xl:border-none lg:border-none border-none hover:bg-[#f78000d6] shadow-lg md:text-xl"><b>Pesan
