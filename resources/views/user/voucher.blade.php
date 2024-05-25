@@ -14,7 +14,7 @@
                 <div class="flex content-center my-auto text-secondary lg:ml-20">
                     <p class="mt-2.5">minimal jarak 10km</p>
                     <div class="text-gray-500 font-light ">
-                        <x-ri-arrow-right-s-line class="w-10 my-auto " />
+                        <x-ri-arrow-drop-right-line class="w-11 h-11" />
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                 <div class="flex content-center my-auto text-secondary lg:ml-20">
                     <p class="mt-2.5">minimal jarak 10km</p>
                     <div class="text-gray-500 font-light ">
-                        <x-ri-arrow-right-s-line class="w-10 my-auto " />
+                        <x-ri-arrow-drop-right-line class="w-11 h-11" />
                     </div>
                 </div>
             </div>
@@ -66,7 +66,7 @@
                 <div class="flex content-center my-auto text-secondary lg:ml-20">
                     <p class="mt-2.5">minimal jarak 10km</p>
                     <div class="text-gray-500 font-light ">
-                        <x-ri-arrow-right-s-line class="w-10 my-auto " />
+                        <x-ri-arrow-drop-right-line class="w-11 h-11" />
                     </div>
                 </div>
             </div>
@@ -92,7 +92,7 @@
                 <div class="flex content-center my-auto text-secondary lg:ml-20">
                     <p class="mt-2.5">minimal jarak 10km</p>
                     <div class="text-gray-500 font-light ">
-                        <x-ri-arrow-right-s-line class="w-10 my-auto " />
+                        <x-ri-arrow-drop-right-line class="w-11 h-11" />
                     </div>
                 </div>
             </div>
@@ -118,7 +118,7 @@
                 <div class="flex content-center my-auto text-secondary lg:ml-20">
                     <p class="mt-2.5">minimal jarak 10km</p>
                     <div class="text-gray-500 font-light ">
-                        <x-ri-arrow-right-s-line class="w-10 my-auto " />
+                        <x-ri-arrow-drop-right-line class="w-11 h-11" />
                     </div>
                 </div>
             </div>
