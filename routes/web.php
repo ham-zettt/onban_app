@@ -21,17 +21,20 @@ use App\Http\Controllers\Admin\AdminRegisterController;
 use App\Http\Controllers\Admin\UserDashboardController;
 use App\Http\Controllers\Worker\WorkerUlasanController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\User\Order\UserOrderController;
 use App\Http\Controllers\Worker\WorkerUpdateStatusOrder;
 use App\Http\Controllers\Admin\WorkerDashboardController;
 use App\Http\Controllers\User\Order\FindWorkerController;
 use App\Http\Controllers\Worker\WorkerRegisterController;
 use App\Http\Controllers\Admin\MetodePembayaranController;
+use App\Http\Controllers\User\Order\PaymentInfoController;
 use App\Http\Controllers\Worker\WorkerPendapatanController;
 use App\Http\Controllers\Admin\StatusTerimaWorkerController;
 use App\Http\Controllers\User\Order\ChooseVehicleController;
+use App\Http\Controllers\User\Order\CancelUderOrderController;
+use App\Http\Controllers\User\Order\CancelUserOrderController;
 use App\Http\Controllers\User\Order\CreateUserOrderController;
 use App\Http\Controllers\User\Order\KonfirmasiOrderController;
-use App\Http\Controllers\User\Order\UserOrderController;
 
 // Route Session untuk ngecek user pertama kali masuk
 Route::get('/', SessionController::class);
@@ -55,7 +58,7 @@ Route::prefix('register')->group(function () {
 Route::middleware(['auth', 'is_customer'])->group(function () {
     Route::get("/home", HomeController::class)->name('home');
     // Route Order
-    Route::get("/order/cancel/{id_order}", [UserOrderController::class, "cancelOrder"])->name('cancel-order');
+    Route::get("/order/cancel/{id_order}", [CancelUserOrderController::class, "cancelOrder"])->name('cancel-order');
 
     Route::get("/order/create-order", [CreateUserOrderController::class, "createOrder"])->name("create-order");
     Route::get("/order/{id_order}/order-choose-vehicle", [ChooseVehicleController::class, "chooseVehicle"])->name('order-choose-vehicle');
@@ -66,6 +69,7 @@ Route::middleware(['auth', 'is_customer'])->group(function () {
     Route::get("/user/vouchers", [UserVoucherController::class, "index"])->name('voucher');
     Route::get("/user/profile", [UserProfileController::class, "index"])->name('profile');
     Route::get("/user/userChat", [UserChatController::class, "index"])->name('userChat');
+    Route::get("/order/payment-info", [PaymentInfoController::class, "index"])->name('payment-info');
 
 });
 
@@ -116,10 +120,10 @@ Route::prefix('worker')->group(function () {
 
     Route::middleware(['auth', 'is_worker'])->group(function () {
         Route::get("/home", WorkerHomeController::class)->name('worker-home');
-        Route::get("/home", WorkerHomeController::class)->name('worker-home');
         Route::get("/home/pendapatan", WorkerPendapatanController::class)->name('worker-pendapatan');
         Route::get("/home/ulasan", WorkerUlasanController::class)->name('worker-ulasan');
         Route::get("/order/{id_order}", [WorkerOrderController::class, 'show'])->name('worker-order');
+        Route::get("/order/{id_order}/selesai", [WorkerOrderController::class, 'finishedOrder'])->name('worker-order-selesai');
         Route::post("/status-terima-order/{idWorker}", [WorkerUpdateStatusOrder::class, "updateStatus"])->name('status-terima-order');
     });
 

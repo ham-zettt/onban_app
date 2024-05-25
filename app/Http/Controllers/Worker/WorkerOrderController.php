@@ -1,4 +1,4 @@
-<?php   
+<?php
 
 namespace App\Http\Controllers\Worker;
 
@@ -11,6 +11,9 @@ class WorkerOrderController extends Controller
     public function show($id_order)
     {
         $order = Pesanan::with(['customer', 'tipe_layanan', 'metode_pembayaran'])->findOrFail($id_order);
+        $order->status_order = 'Diproses';
+        $order->save();
+
         // $id_worker = session('userData')->worker->id_worker;
         // $status_menerima_order = Worker::findOrFail($id_worker)->status_menerima;
         return view('worker.order', [
@@ -20,4 +23,13 @@ class WorkerOrderController extends Controller
             "worker" => session('userData')->worker
         ]);
     }
+
+    public function finishedOrder($id_order)
+    {
+        $order = Pesanan::with(['customer', 'tipe_layanan', 'metode_pembayaran'])->findOrFail($id_order);
+        $order->status_order = 'Selesai';
+        $order->save();
+        return redirect()->route('worker-home');
+    }
+
 }

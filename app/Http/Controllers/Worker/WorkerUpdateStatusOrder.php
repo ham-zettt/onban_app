@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Worker;
 use Illuminate\Http\Request;
 
-class WorkerUpdateStatusOrder extends Controller
+class 
+
+WorkerUpdateStatusOrder extends Controller
 {
     public function updateStatus(Request $request)
     {
