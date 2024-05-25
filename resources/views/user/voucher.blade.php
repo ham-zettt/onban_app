@@ -4,136 +4,33 @@
         class="text-center text-2xl font-bold text-white mx-auto absolute w-3/4 h-40 top-28 left-1/2 right-1/2 translate-x-[-50%] ">
         Voucher </h1>
     <div class="flex-col flex gap-3 lg:w-2/3  lg:mx-auto mb-9">
-        <div class="w-full bg-white rounded-lg 800 h-full flex flex-col text-sm shadow-lg" x-data="{ open: false }">
-            <div x-on:click="open = ! open" class="lg:gap-52 w-full flex md:gap-36 md:p-4 ">
-                <div class="flex flex-col w-1/2 p-2  rounded-md ">
-                    <p class="font-semibold text-primary">Voucher diskon</p>
-                    <p class="font-semibold text-black text-2xl">20%</p>
-                    <p class="text-red-500 opacity-55 mt-2">exp : 2 hari</p>
+        @foreach ($vouchers as $voucher)
+            <div class="w-full bg-white rounded-lg 800 h-full flex flex-col text-sm shadow-lg" x-data="{ open: false }">
+                <div x-on:click="open = ! open" class="lg:gap-52 w-full flex md:gap-36 md:p-4 ">
+                    <div class="flex flex-col w-1/2 p-2  rounded-md ">
+                        <p class="font-semibold text-primary">{{ $voucher->nama_voucher }}</p>
+                        <p class="font-semibold text-black text-2xl">{{ $voucher->potongan_harga * 100 }}%</p>
+                        <p class="text-red-500 opacity-55 mt-2">exp : {{ $voucher->sisa_hari }} hari lagi</p>
+                    </div>
+                    <div class="flex content-center my-auto text-secondary lg:ml-20">
+                        <p class="mt-2.5 font-semibold">{{ $voucher->kode_voucher }}</p>
+                        <div class="text-gray-500 font-light ">
+                            <x-ri-arrow-right-s-line class="w-10 my-auto " />
+                        </div>
+                    </div>
                 </div>
-                <div class="flex content-center my-auto text-secondary lg:ml-20">
-                    <p class="mt-2.5">minimal jarak 10km</p>
-                    <div class="text-gray-500 font-light ">
-                        <x-ri-arrow-right-s-line class="w-10 my-auto " />
+                <div x-show="open" x-transition class="flex flex-col mx-auto p-2 md:ml-2 ">
+                    <div class="flex flex-col p-2 ">
+                        <p class="font-semibold ">Masa Berlaku</p>
+                        <p class="text-gray-500">{{ $voucher->tanggal_mulai }} - {{ $voucher->tanggal_berakhir }}</p>
+                    </div>
+                    <div class="flex flex-col p-2 ">
+                        <p class="font-semibold ">Syarat Penggunaan</p>
+                        <p class="text-gray-500">{{ $voucher->deskripsi }}</p>
                     </div>
                 </div>
             </div>
-            <div x-show="open" x-transition class="flex flex-col mx-auto p-2 md:ml-2 ">
-                <div class="flex flex-col p-2 ">
-                    <p class="font-semibold ">Masa Berlaku</p>
-                    <p class="text-gray-500">28 Mei 2024 00:00 - 30 Mei 2024 23:59</p>
-                </div>
-                <div class="flex flex-col p-2 ">
-                    <p class="font-semibold ">Syarat Penggunaan</p>
-                    <p class="text-gray-500">Voucher ini hanya dapat digunakan jika jarak anda dengan worker sejauh minimal
-                        10km</p>
-                </div>
-            </div>
-        </div>
-        <div class="w-full bg-white rounded-lg 800 h-full flex flex-col text-sm shadow-lg" x-data="{ open: false }">
-            <div x-on:click="open = ! open" class="lg:gap-52 w-full flex md:gap-36 md:p-4">
-                <div class="flex flex-col w-1/2 p-2  rounded-md ">
-                    <p class="font-semibold text-primary">Voucher diskon</p>
-                    <p class="font-semibold text-black text-2xl">20%</p>
-                    <p class="text-red-500 opacity-55 mt-2">exp : 2 hari</p>
-                </div>
-                <div class="flex content-center my-auto text-secondary lg:ml-20">
-                    <p class="mt-2.5">minimal jarak 10km</p>
-                    <div class="text-gray-500 font-light ">
-                        <x-ri-arrow-right-s-line class="w-10 my-auto " />
-                    </div>
-                </div>
-            </div>
-            <div x-show="open" x-transition class="flex flex-col mx-auto p-2 md:ml-2 ">
-                <div class="flex flex-col p-2 ">
-                    <p class="font-semibold ">Masa Berlaku</p>
-                    <p class="text-gray-500">28 Mei 2024 00:00 - 30 Mei 2024 23:59</p>
-                </div>
-                <div class="flex flex-col p-2 ">
-                    <p class="font-semibold ">Syarat Penggunaan</p>
-                    <p class="text-gray-500">Voucher ini hanya dapat digunakan jika jarak anda dengan worker sejauh minimal
-                        10km</p>
-                </div>
-            </div>
-        </div>
-        <div class="w-full bg-white rounded-lg 800 h-full flex flex-col text-sm shadow-lg" x-data="{ open: false }">
-            <div x-on:click="open = ! open" class="lg:gap-52 w-full flex md:gap-36 md:p-4">
-                <div class="flex flex-col w-1/2 p-2  rounded-md ">
-                    <p class="font-semibold text-primary">Voucher diskon</p>
-                    <p class="font-semibold text-black text-2xl">20%</p>
-                    <p class="text-red-500 opacity-55 mt-2">exp : 2 hari</p>
-                </div>
-                <div class="flex content-center my-auto text-secondary lg:ml-20">
-                    <p class="mt-2.5">minimal jarak 10km</p>
-                    <div class="text-gray-500 font-light ">
-                        <x-ri-arrow-right-s-line class="w-10 my-auto " />
-                    </div>
-                </div>
-            </div>
-            <div x-show="open" x-transition class="flex flex-col mx-auto p-2 md:ml-2 ">
-                <div class="flex flex-col p-2 ">
-                    <p class="font-semibold ">Masa Berlaku</p>
-                    <p class="text-gray-500">28 Mei 2024 00:00 - 30 Mei 2024 23:59</p>
-                </div>
-                <div class="flex flex-col p-2 ">
-                    <p class="font-semibold ">Syarat Penggunaan</p>
-                    <p class="text-gray-500">Voucher ini hanya dapat digunakan jika jarak anda dengan worker sejauh minimal
-                        10km</p>
-                </div>
-            </div>
-        </div>
-        <div class="w-full bg-white rounded-lg 800 h-full flex flex-col text-sm shadow-lg" x-data="{ open: false }">
-            <div x-on:click="open = ! open" class="lg:gap-52 w-full flex md:gap-36 md:p-4">
-                <div class="flex flex-col w-1/2 p-2  rounded-md ">
-                    <p class="font-semibold text-primary">Voucher diskon</p>
-                    <p class="font-semibold text-black text-2xl">20%</p>
-                    <p class="text-red-500 opacity-55 mt-2">exp : 2 hari</p>
-                </div>
-                <div class="flex content-center my-auto text-secondary lg:ml-20">
-                    <p class="mt-2.5">minimal jarak 10km</p>
-                    <div class="text-gray-500 font-light ">
-                        <x-ri-arrow-right-s-line class="w-10 my-auto " />
-                    </div>
-                </div>
-            </div>
-            <div x-show="open" x-transition class="flex flex-col mx-auto p-2 md:ml-2 ">
-                <div class="flex flex-col p-2 ">
-                    <p class="font-semibold ">Masa Berlaku</p>
-                    <p class="text-gray-500">28 Mei 2024 00:00 - 30 Mei 2024 23:59</p>
-                </div>
-                <div class="flex flex-col p-2 ">
-                    <p class="font-semibold ">Syarat Penggunaan</p>
-                    <p class="text-gray-500">Voucher ini hanya dapat digunakan jika jarak anda dengan worker sejauh minimal
-                        10km</p>
-                </div>
-            </div>
-        </div>
-        <div class="w-full bg-white rounded-lg 800 h-full flex flex-col text-sm shadow-lg" x-data="{ open: false }">
-            <div x-on:click="open = ! open" class="lg:gap-52 w-full flex md:gap-36 md:p-4">
-                <div class="flex flex-col w-1/2 p-2  rounded-md ">
-                    <p class="font-semibold text-primary">Voucher diskon</p>
-                    <p class="font-semibold text-black text-2xl">20%</p>
-                    <p class="text-red-500 opacity-55 mt-2">exp : 2 hari</p>
-                </div>
-                <div class="flex content-center my-auto text-secondary lg:ml-20">
-                    <p class="mt-2.5">minimal jarak 10km</p>
-                    <div class="text-gray-500 font-light ">
-                        <x-ri-arrow-right-s-line class="w-10 my-auto " />
-                    </div>
-                </div>
-            </div>
-            <div x-show="open" x-transition class="flex flex-col mx-auto p-2 md:ml-2 ">
-                <div class="flex flex-col p-2 ">
-                    <p class="font-semibold ">Masa Berlaku</p>
-                    <p class="text-gray-500">28 Mei 2024 00:00 - 30 Mei 2024 23:59</p>
-                </div>
-                <div class="flex flex-col p-2 ">
-                    <p class="font-semibold ">Syarat Penggunaan</p>
-                    <p class="text-gray-500">Voucher ini hanya dapat digunakan jika jarak anda dengan worker sejauh minimal
-                        10km</p>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 
     {{-- navigation bar --}}
@@ -156,8 +53,7 @@
             <div class="w-14  text-white  h-full  text-center flex flex-col justify-center ">
                 <a href="{{ route('logout') }}" id="logout"
                     class="w-14 text-white  h-full  text-center flex flex-col justify-center ">
-                    <img class="w-3/4 h-3/4" src="{{ asset('assets/images/logout.svg') }}" id="imgLogout"
-                        alt="logout">
+                    <img class="w-3/4 h-3/4" src="{{ asset('assets/images/logout.svg') }}" id="imgLogout" alt="logout">
                     <p class="text-sm">Logout</p>
                 </a>
             </div>

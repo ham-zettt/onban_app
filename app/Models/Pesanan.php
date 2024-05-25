@@ -11,26 +11,23 @@ class Pesanan extends Model
     protected $table = 'order';
     protected $primaryKey = 'id_order';
 
-    protected $fillable = [
-        'harga',
-        'jarak',
-        'catatan',
-        'alamat',
-        'latitude',
-        'longitude',
-        'tanggal',
-        'waktu'
+    protected $guarded = [
+        "id_order"
     ];
 
     public function customer(){
         return $this->belongsTo(Customer::class, 'customer_id');
     }
 
+    public function worker(){
+        return $this->belongsTo(Worker::class, 'worker_id');
+    }
+
     public function tipe_layanan(){
         return $this->belongsTo(TipeLayanan::class, 'tipe_layanan_id');
     }
+    
 
-    public function metode_pembayaran(){
-        return $this->belongsTo(MetodePembayaran::class, 'metode_pembayaran_id');
-    }
+
+
 }
