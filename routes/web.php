@@ -21,7 +21,6 @@ use App\Http\Controllers\Admin\AdminRegisterController;
 use App\Http\Controllers\Admin\UserDashboardController;
 use App\Http\Controllers\Worker\WorkerUlasanController;
 use App\Http\Controllers\Admin\AdminDashboardController;
-use App\Http\Controllers\User\Order\UserOrderController;
 use App\Http\Controllers\Worker\WorkerUpdateStatusOrder;
 use App\Http\Controllers\Admin\WorkerDashboardController;
 use App\Http\Controllers\User\Order\FindWorkerController;
@@ -30,11 +29,12 @@ use App\Http\Controllers\Admin\MetodePembayaranController;
 use App\Http\Controllers\User\Order\PaymentInfoController;
 use App\Http\Controllers\Worker\WorkerPendapatanController;
 use App\Http\Controllers\Admin\StatusTerimaWorkerController;
+use App\Http\Controllers\AppGuide\AppGuideController;
 use App\Http\Controllers\User\Order\ChooseVehicleController;
-use App\Http\Controllers\User\Order\CancelUderOrderController;
 use App\Http\Controllers\User\Order\CancelUserOrderController;
 use App\Http\Controllers\User\Order\CreateUserOrderController;
 use App\Http\Controllers\User\Order\KonfirmasiOrderController;
+use App\Http\Controllers\User\Order\UpdateStatusOrderController;
 
 // Route Session untuk ngecek user pertama kali masuk
 Route::get('/', SessionController::class);
@@ -64,13 +64,13 @@ Route::middleware(['auth', 'is_customer'])->group(function () {
     Route::get("/order/{id_order}/order-choose-vehicle", [ChooseVehicleController::class, "chooseVehicle"])->name('order-choose-vehicle');
     Route::get("/order/{id_order}/update-type/{id_tipe_layanan}", [ChooseVehicleController::class, "updateTypeLayananOrder"])->name("update-type");
     Route::get("/order/{id_order}/konfirmasi_order", [KonfirmasiOrderController::class, "konfirmasiOrder"])->name('konfirmasi-order');
+    Route::post("/order/update-location", [UpdateStatusOrderController::class, "updateStatusAndPosition"])->name('update-location');
 
     Route::get("/order/find-worker", FindWorkerController::class)->name('worker-find');
     Route::get("/user/vouchers", [UserVoucherController::class, "index"])->name('voucher');
     Route::get("/user/profile", [UserProfileController::class, "index"])->name('profile');
     Route::get("/user/userChat", [UserChatController::class, "index"])->name('userChat');
     Route::get("/order/payment-info", [PaymentInfoController::class, "index"])->name('payment-info');
-
 });
 
 // Route Admin
@@ -124,10 +124,20 @@ Route::prefix('worker')->group(function () {
         Route::get("/home/ulasan", WorkerUlasanController::class)->name('worker-ulasan');
         Route::get("/order/{id_order}", [WorkerOrderController::class, 'show'])->name('worker-order');
         Route::get("/order/{id_order}/selesai", [WorkerOrderController::class, 'finishedOrder'])->name('worker-order-selesai');
-        Route::post("/status-terima-order/{idWorker}", [WorkerUpdateStatusOrder::class, "updateStatus"])->name('status-terima-order');
+        Route::post("/status-terima-order", [WorkerUpdateStatusOrder::class, "updateStatus"])->name('status-terima-order');
     });
 
     // Route
+});
+
+// Route AppGuide
+Route::prefix('/help')->group(function () {
+    Route::get('/user', [AppGuideController::class, 'indexuser'])->name('user-help');
+    Route::get('/user/{category}', [AppGuideController::class, 'indexguidepanduan'])->name('panduan');
+
+    Route::prefix('/worker')->group(function () {
+        Route::get('/', [AppGuideController::class, 'indexworker'])->name('worker-help');
+    });
 });
 
 // Route Logout
