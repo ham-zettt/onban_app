@@ -51,7 +51,7 @@ class DatabaseSeeder extends Seeder
         // ganti antara admin, customer, atau worker tapi salah dua harus di komen dulu
         // Customer::factory()->count(10)->create();
         // Worker::factory()->count(1)->create();
-        // Admin::factory()->count(1)->create();
+        Admin::factory()->count(1)->create();
 
 
 

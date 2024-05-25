@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('total_harga')->nullable();
             $table->float('jarak')->nullable();
             $table->text('catatan')->nullable();
-            $table->string('alamat')->nullable();
+            $table->text('alamat')->nullable();
             $table->decimal('latitude', 10, 8)->nullable();
             $table->decimal('longitude', 11, 8)->nullable();
             $table->date('tanggal')->nullable();
