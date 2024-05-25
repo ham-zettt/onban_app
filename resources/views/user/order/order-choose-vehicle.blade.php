@@ -8,7 +8,7 @@
             @if ($allTipeLayanan->count() > 0)
                 @foreach ($allTipeLayanan as $tipeLayanan)
                     <div>
-                        <a href="{{ route('konfirmasi-order') }}">
+                       <a href="{{ route('update-type', ['id_order' => $id_order, 'id_tipe_layanan' => $tipeLayanan->id_tipe_layanan]) }}">
                             <button
                                 class="bg-primary hover:bg-primary-dark rounded-lg w-full p-6 font-bold text-white flex justify-between"
                                 value="sepeda">
@@ -28,7 +28,7 @@
                 </div>
             @endif
         </div>
-        <a href="{{ route('home') }}" class="flex justify-center md:w-2/3 md:mx-auto">
+        <a href="{{ route('cancel-order', ['id_order' => $id_order ]) }}" class="flex justify-center md:w-2/3 md:mx-auto">
             <button class="bg-primary hover:bg-primary-dark text-white font-bold py-2 px-4 mt-8 w-3/4 mx-auto rounded-lg">
                 Batal
             </button>

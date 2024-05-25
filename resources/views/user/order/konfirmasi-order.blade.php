@@ -1,6 +1,6 @@
 @extends('layouts.user-layout')
 @section('content')
-    <img src="{{ asset('assets/images/motor.svg') }}" alt="kendaraan"
+    <img src="{{ asset('storage/' . $informasi_order->tipe_layanan->foto_tipe_layanan) }}" alt="kendaraan"
         class="absolute top-28 left-20 md:left-1/2 lg:right-1/2 lg:translate-x-[-50%]">
     <div class="bg-primary rounded-lg px-8 py-4 mx-4 mt-10 md:w-3/4 md:mx-auto lg:w-1/3 lg:mx-auto">
         <p class="text-2xl text-white font-bold text-center">Informasi Order</p>
@@ -11,10 +11,11 @@
                 <p>Harga per km</p>
             </div>
             <div class="text-right text-white">
-                <p>Mobil</p>
-                <p>Rp 30000</p>
+                <p>{{ $informasi_order->tipe_layanan->nama_tipe_layanan }}</p>
+                <p>{{ $informasi_order->tipe_layanan->harga_tipe_layanan }}</p>
                 <p>Rp 3000</p>
             </div>
+
         </div>
     </div>
 
@@ -31,12 +32,13 @@
             </select>
         </div>
         <div class="flex flex-col gap-4 md:gap-6 md:w-2/3 md:mx-auto lg:w-1/3">
-            <a href="{{ route('worker-find') }}" id="confirmOrder"
+            <a href="{{  route('worker-find')  }}" id="confirmOrder"
                 class="bg-white border-4 border-primary content-center text-primary mx-16 p-2 rounded-lg hover:text-orange-400 hover:border-orange-400">Konfirmasi</a>
-            <a href="{{ route('order-choose-vehicle') }}"
+            <a href="{{  route('order-choose-vehicle', ['id_order' => $informasi_order->id_order ])  }}"
                 class="bg-primary text-white mx-16 p-2 content-center rounded-lg hover:bg-orange-400">kembali</a>
         </div>
     </div>
+
 @endsection
 @section('js')
     <script>

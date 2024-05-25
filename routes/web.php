@@ -21,16 +21,20 @@ use App\Http\Controllers\Admin\AdminRegisterController;
 use App\Http\Controllers\Admin\UserDashboardController;
 use App\Http\Controllers\Worker\WorkerUlasanController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\User\Order\UserOrderController;
 use App\Http\Controllers\Worker\WorkerUpdateStatusOrder;
 use App\Http\Controllers\Admin\WorkerDashboardController;
 use App\Http\Controllers\User\Order\FindWorkerController;
 use App\Http\Controllers\Worker\WorkerRegisterController;
 use App\Http\Controllers\Admin\MetodePembayaranController;
+use App\Http\Controllers\User\Order\PaymentInfoController;
 use App\Http\Controllers\Worker\WorkerPendapatanController;
 use App\Http\Controllers\Admin\StatusTerimaWorkerController;
 use App\Http\Controllers\User\Order\ChooseVehicleController;
+use App\Http\Controllers\User\Order\CancelUderOrderController;
+use App\Http\Controllers\User\Order\CancelUserOrderController;
+use App\Http\Controllers\User\Order\CreateUserOrderController;
 use App\Http\Controllers\User\Order\KonfirmasiOrderController;
-use App\Http\Controllers\User\Order\PaymentInfoController;
 
 // Route Session untuk ngecek user pertama kali masuk
 Route::get('/', SessionController::class);
@@ -54,8 +58,13 @@ Route::prefix('register')->group(function () {
 Route::middleware(['auth', 'is_customer'])->group(function () {
     Route::get("/home", HomeController::class)->name('home');
     // Route Order
-    Route::get("/order/order-choose-vehicle", ChooseVehicleController::class)->name('order-choose-vehicle');
-    Route::get("/order/konfirmasi-order", [KonfirmasiOrderController::class, "index"])->name("konfirmasi-order");
+    Route::get("/order/cancel/{id_order}", [CancelUserOrderController::class, "cancelOrder"])->name('cancel-order');
+
+    Route::get("/order/create-order", [CreateUserOrderController::class, "createOrder"])->name("create-order");
+    Route::get("/order/{id_order}/order-choose-vehicle", [ChooseVehicleController::class, "chooseVehicle"])->name('order-choose-vehicle');
+    Route::get("/order/{id_order}/update-type/{id_tipe_layanan}", [ChooseVehicleController::class, "updateTypeLayananOrder"])->name("update-type");
+    Route::get("/order/{id_order}/konfirmasi_order", [KonfirmasiOrderController::class, "konfirmasiOrder"])->name('konfirmasi-order');
+
     Route::get("/order/find-worker", FindWorkerController::class)->name('worker-find');
     Route::get("/user/vouchers", [UserVoucherController::class, "index"])->name('voucher');
     Route::get("/user/profile", [UserProfileController::class, "index"])->name('profile');
