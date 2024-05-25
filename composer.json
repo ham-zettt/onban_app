@@ -6,12 +6,14 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "andreiio/blade-remix-icon": "^3.2",
+        "andreiio/blade-remix-icon": "*",
         "attrixtech/laravel-icons": "^1.2",
         "brunocfalcao/blade-feather-icons": "^4.0",
+        "codeat3/blade-fluentui-system-icons": "^1.33",
         "itsgoingd/clockwork": "^5.2",
         "laravel/framework": "^11.0",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "ryangjchandler/blade-tabler-icons": "^2.3"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
