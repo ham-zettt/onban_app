@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Worker;
 use Illuminate\Http\Request;
 
-class 
+class
 
 WorkerUpdateStatusOrder extends Controller
 {
@@ -18,6 +18,6 @@ WorkerUpdateStatusOrder extends Controller
         $worker->longitude = $request->longitude;
         $worker->save();
         return response()->json(['message' => 'Status updated successfully'], 200);
-        return redirect()->route('worker-home')->with('success', 'Status berhasil diperbarui.');
+        return redirect()->route('worker-pendapatan')->with('success', 'Status berhasil diperbarui.');
     }
 }
