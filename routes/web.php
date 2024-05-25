@@ -70,7 +70,6 @@ Route::middleware(['auth', 'is_customer'])->group(function () {
     Route::get("/user/profile", [UserProfileController::class, "index"])->name('profile');
     Route::get("/user/userChat", [UserChatController::class, "index"])->name('userChat');
     Route::get("/order/payment-info", [PaymentInfoController::class, "index"])->name('payment-info');
-
 });
 
 // Route Admin
