@@ -26,6 +26,7 @@ use App\Http\Controllers\Admin\WorkerDashboardController;
 use App\Http\Controllers\User\Order\FindWorkerController;
 use App\Http\Controllers\Worker\WorkerRegisterController;
 use App\Http\Controllers\Admin\MetodePembayaranController;
+use App\Http\Controllers\Admin\OrderDashboardController;
 use App\Http\Controllers\User\Order\PaymentInfoController;
 use App\Http\Controllers\Worker\WorkerPendapatanController;
 use App\Http\Controllers\Admin\StatusTerimaWorkerController;
@@ -90,7 +91,6 @@ Route::prefix('admin')->group(function () {
         Route::get('/users', [UserDashboardController::class, "index"])->name('admin-users');
         Route::get('/users/{id}/show', [UserDashboardController::class, "show"])->name('admin-users-show');
         // dashboard worker
-
         Route::get('/workers', [WorkerDashboardController::class, "index"])->name('admin-workers');
         Route::get('/workers/{id}/show', [WorkerDashboardController::class, "show"])->name('admin-workers-show');
         Route::get('/workers/{id}/delete', [WorkerDashboardController::class, "destroy"])->name('admin-workers-delete');
@@ -103,7 +103,9 @@ Route::prefix('admin')->group(function () {
         Route::resource('/metode-pembayaran', MetodePembayaranController::class);
         // Route Tipe Layanan
         Route::resource('/tipe-layanan', TipeLayananController::class);
-        // Route untuk mengubah status penerimaan worker
+        // Route Admin
+        Route::get('/orders', [OrderDashboardController::class, 'index'])->name('admin-orders');
+        Route::get('/orders/{id_order}', [OrderDashboardController::class, 'show'])->name('admin-orders-show');
 
     });
 });
