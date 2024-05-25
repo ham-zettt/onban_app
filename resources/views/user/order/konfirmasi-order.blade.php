@@ -34,6 +34,9 @@
                     @endforeach
                 </select>
             </div>
+            {{-- buatkan inputan catatan order --}}
+            <textarea name="catatan" placeholder="catatan order"  cols="50" rows="3"></textarea>
+
             <div class="flex flex-col gap-4 md:gap-6 md:w-2/3 md:mx-auto lg:w-1/3">
                 <button id="confirmOrder"
                     class="bg-white border-4 border-primary content-center text-primary mx-16 p-2 rounded-lg hover:text-orange-400 hover:border-orange-400">Konfirmasi</button>

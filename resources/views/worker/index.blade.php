@@ -46,6 +46,7 @@
     </div>
 
     {{-- Detail Order List --}}
+    @if ($status_menerima_order)
     <div class="w-full max-w-md p-4 bg-white border border-gray-400 rounded-lg shadow">
         <div class="flex items-center justify-between mb-2">
             <h5 class="text-xl font-bold text-gray-800">Daftar Pesanan</h5>
@@ -131,18 +132,9 @@
                                                         <td class="font-medium w-10">Alamat</td>
                                                         <td class="text-right">{{ $order->alamat }}</td>
                                                     </tr>
-                                                    {{-- <tr>
-                                            <td class="font-medium w-10">Latitude, Longitude</td>
-                                            <td class="text-right">{{ $order->latitude }}, {{ $order->longitude }}</td>
-                                        </tr> --}}
                                                     <tr>
                                                         <td class="font-medium w-10">Catatan</td>
                                                         <td class="text-right">{{ $order->catatan }}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="font-medium w-10">Pembayaran</td>
-                                                        <td class="text-right">
-                                                            {{-- {{ $order->metode_pembayaran->nama_metode_pembayaran }}</td> --}}
                                                     </tr>
                                                     <tr>
                                                         <td class="font-bold w-10">Total</td>
@@ -171,6 +163,11 @@
             @endif
         </div>
     </div>
+    @else
+        <h1 class="text-center">Hidupkan terima orderan untuk melihat list orderan</h1>
+    @endif
+
+
 @endsection
 
 @section('js')
