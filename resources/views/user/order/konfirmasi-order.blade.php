@@ -20,8 +20,9 @@
     </div>
 
     <div class="flex flex-col text-center py-8 md:py-10 space-y-4 md:gap-10 font-bold w-full">
-        <div x-data="{ open: false }" class="md:gap-4 w-2/3 md:w-2/4 lg:w-1/3p mx-auto md:mx-auto h-20">
-            <select class="w-full h-20" id="voucher" name="state" style="background-color: orange; height: 10%;">
+        <div x-data="{ open: false }" class="md:gap-4 w-2/3 md:w-2/4 lg:w-1/3 mx-auto md:mx-auto h-20">
+            <select class="w-full h-10" id="voucher" name="state" >
+           
                 <option value="AL">nunu</option>
                 <option value="AL">asda</option>
                 <option value="AL">Aldsadabama</option>
@@ -38,6 +39,7 @@
                 class="bg-primary text-white mx-16 p-2 content-center rounded-lg hover:bg-orange-400">kembali</a>
         </div>
     </div>
+
 
 @endsection
 @section('js')
