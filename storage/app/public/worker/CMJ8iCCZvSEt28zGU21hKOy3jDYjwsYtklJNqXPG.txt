@@ -1,0 +1,47 @@
+======================== Panduan Pelanggan ONBAN =============================
+
+Panduan Pembuatan Akun
+1.) Masuk ke aplikasi.
+2.) Klik Register.
+3.) Isi keseluruhan form sesuai dengan keterangan.
+4.) Jika data sudah benar maka klik "Sign in", Maka Anda berhasil mendaftar.
+5.) Lalu Anda akan dialihkan ke menu login, Masukan email dan password sesuai data yang sudah didaftarkan sebelumnya.
+
+Panduan Pemesanan
+1.) Pastikan Anda sudah login menggunakan akun yang sudah dibuat, dan berada di home.
+2.) Pastikan Anda sudah mengaktifkan fitur GPS.
+2.) Klik "Pesan Sekarang".
+3.) Pilih kendaraan Anda.
+4.) Lalu Konfirmasi Pesanan Anda, terdapat informasi order (kendaraan, harga, tarif per km).
+5.) Anda berhasil melakukan pemesanan.
+
+Cara membatalkan pesanan
+Anda bisa membatalkan pesanan kapan saja. Cukup tekan tombol Batalkan dari halaman pemesanan, lalu Ya, Batalkan.
+
+Bagaimana cara mengubah informasi akun saya?
+Anda dapat pergi ke menu profile, kemudian Anda klik edit, dan ubah informasi yang Anda perlukan.
+
+Di mana saya bisa menemukan voucher
+Anda dapat menemukan voucher yang Anda miliki didalam halaman utama ONBAN > Promo.
+
+========================= Panduan Pekerja ONBAN ======================
+
+Panduan Pembuatan Akun Pekerja
+1.) Masuk ke aplikasi.
+2.) Klik Login pekerja.
+4.) Klik Register.
+5.) Isi keseluruhan form sesuai dengan keterangan dan cantumkan foto KTP.
+6.) Jika data sudah benar maka klik "Sign in", Maka Anda berhasil mendaftar.
+7.) Kemudian verifikasi email anda.
+7.) Lalu Anda akan dialihkan ke menu login, Masukan email dan password sesuai data yang sudah didaftarkan sebelumnya.
+
+Panduan menerima orderan
+1.) Aktifkan GPS anda.
+2.) Aktifkan "terima orderan" pada halaman home pekerja.
+3.) Lalu tunggu sistem untuk merekomendasikan anda, ketika terdapat orderan yang masuk untuk mengambil pekerjaan.
+
+Bagaimana cara melihat riwayat pendapatan saya
+Ikuti langkah-langkah mudah berikut untuk melihat riwayat pendapatan ONBAN Anda:
+1.) Tekan ikon ‘Pendapatan’ di bagian bawah halaman depan aplikasi ONBAN Anda.
+2.) Tekan detail pendapatan untuk melihat grafik detail pendapatan Anda.
+3.) Tekan salah satu transaksi untuk detail lebih lanjut.

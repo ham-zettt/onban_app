@@ -1,7 +1,7 @@
 @extends('layouts.user-layout')
 @section('content')
     <div class="mx-auto top-32 w-full z-30 absolute content-center left-1/2 right-1/2 translate-x-[-50%] text-center">
-        <h1 class="text-xl font-semibold">Total Bayar</h1>
+        <h1 class="text-2xl font-semibold ">Informasi Pembayaran</h1>
     </div>
     <div class="flex-col flex flex-wrap justify-center md:w-2/3 lg:w-1/2 mx-auto">
         <div
@@ -45,6 +45,6 @@
             </div>
         </div>
     </div>
-
+    
     
 @endsection
