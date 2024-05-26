@@ -22,20 +22,21 @@
     <div class="flex flex-col text-center py-8 md:py-10 space-y-4 md:gap-10 font-bold w-full">
         <form action="{{ route('update-location') }}" method="post">
             @csrf
-            <div x-data="{ open: false }" class="md:gap-4 w-2/3 md:w-2/4 lg:w-1/3p mx-auto md:mx-auto h-20">
+            <div x-data="{ open: false }" class="md:gap-4 w-2/3 md:w-2/4 lg:w-1/3 mx-auto md:mx-auto h-20">
                 <input type="hidden" name="id_order" value="{{ $informasi_order->id_order }}">
                 <input type="hidden" name="latitude">
                 <input type="hidden" name="longitude">
                 <input type="hidden" name="alamat">
                 <input type="hidden" name="status_order" value="Menunggu Pekerja">
-                <select class="w-full h-20" id="voucher" name="voucher_id" style="background-color: orange; height: 10%;">
+                <select class="w-full h-20 " id="voucher" name="voucher_id" >
                     @foreach ($vouchers as $voucher)
                         <option value="{{ $voucher->id_voucher }}">{{ $voucher->nama_voucher }}</option>
                     @endforeach
                 </select>
             </div>
+
             {{-- buatkan inputan catatan order --}}
-            <textarea name="catatan" placeholder="catatan order"  cols="50" rows="3"></textarea>
+            <textarea name="catatan" placeholder="catatan order"  class="w-3/4 h-20 rounded-md mb-4 md:w-1/2 md:h-40 lg:w-1/3"></textarea>
 
             <div class="flex flex-col gap-4 md:gap-6 md:w-2/3 md:mx-auto lg:w-1/3">
                 <button id="confirmOrder"
@@ -45,6 +46,7 @@
             </div>
         </form>
     </div>
+
 @endsection
 @section('js')
     <script>
