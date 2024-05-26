@@ -5,24 +5,36 @@ namespace App\Http\Controllers\Worker;
 use App\Models\Pesanan;
 use App\Http\Controllers\Controller;
 use App\Models\Worker;
+use GuzzleHttp\Client;
 
 class WorkerOrderController extends Controller
 {
 
     public function hitungJarak($latCustomer, $longCustomer, $latWorker, $longWorker)
     {
-        $earthRadius = 6371;
-        $latFrom = deg2rad($latWorker);
-        $lonFrom = deg2rad($longWorker);
-        $latTo = deg2rad($latCustomer);
-        $lonTo = deg2rad($longCustomer);
+        $apiKey = env("OPENROUTESERVICE_API_KEY");
+        $url = 'https://api.openrouteservice.org/v2/directions/driving-car';
+        $client = new Client();
+        $response = $client->post($url, [
+            'headers' => [
+                'Authorization' => $apiKey,
+                'Content-Type' => 'application/json',
+            ],
+            'body' => json_encode([
+                'coordinates' => [
+                    [$latCustomer, $longCustomer],
+                    [$latWorker, $longWorker]
+                ],
+            ]),
+        ]);
 
-        $latDelta = $latTo - $latFrom;
-        $lonDelta = $lonTo - $lonFrom;
+        $data = json_decode($response->getBody(), true);
 
-        $angle = 2 * asin(sqrt(pow(sin($latDelta / 2), 2) +
-            cos($latFrom) * cos($latTo) * pow(sin($lonDelta / 2), 2)));
-        return $angle * $earthRadius;
+        if (!empty($data['routes'])) {
+            return $data['routes'][0]['summary']['distance'] / 1000; // Distance in kilometers
+        }
+
+        return null;
     }
     public function ambilOrder(string $id_order)
     {
@@ -36,7 +48,11 @@ class WorkerOrderController extends Controller
         $longCustomer = $order->longitude;
 
         // hitung jarak antara worker dan customer
-        $jarak = $this->hitungJarak($latCustomer, $longCustomer, $latWorker, $longWorker);
+        $jarak = $this->hitungJarak($latWorker,
+            $longWorker,
+            $latCustomer,
+            $longCustomer
+        );
 
         // harga per km
         $hargaPerKm = 3000;
@@ -48,7 +64,7 @@ class WorkerOrderController extends Controller
         // update order
         $order->total_harga = $totalHarga;
         $order->jarak = $jarak;
-        
+
 
 
         $order->worker_id = $worker->id_worker;

@@ -47,25 +47,12 @@ class DatabaseSeeder extends Seeder
             'foto_tipe_layanan' => '/tipe-layanan/eEedB75XeTrjXyOemmIpdSuWVynaTjCSB4z8EqYE.png',
         ]);
 
-        Voucher::factory()->count(10)->create();
-        // ganti antara admin, customer, atau worker tapi salah dua harus di komen dulu
-<<<<<<< HEAD
-        // Customer::factory()->count(10)->create();
-<<<<<<< HEAD
-        Worker::factory()->count(1)->create();
-=======
+        // Voucher::factory()->count(10)->create();
+
         // Worker::factory()->count(1)->create();
->>>>>>> 698110c1345a848c534ea0387182de130ba8f05b
         // Admin::factory()->count(1)->create();
-=======
-        Customer::factory()->count(10)->create();
+        // Customer::factory()->count(10)->create();
         // Worker::factory()->count(1)->create();
         Admin::factory()->count(1)->create();
->>>>>>> f2a2e4cc4bd70da24142ec70d4a890f25bca8596
-
-
-
-
-
     }
 }

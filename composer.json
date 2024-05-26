@@ -2,7 +2,10 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "keywords": [
+        "laravel",
+        "framework"
+    ],
     "license": "MIT",
     "require": {
         "php": "^8.2",
@@ -10,6 +13,7 @@
         "attrixtech/laravel-icons": "^1.2",
         "brunocfalcao/blade-feather-icons": "^4.0",
         "codeat3/blade-fluentui-system-icons": "^1.33",
+        "guzzlehttp/guzzle": "^7.8",
         "itsgoingd/clockwork": "^5.2",
         "laravel/framework": "^11.0",
         "laravel/tinker": "^2.9",

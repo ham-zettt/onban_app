@@ -19,7 +19,7 @@ return new class extends Migration
             $table->enum('status_order', ['Menunggu Pekerja', 'Diproses', 'Selesai', 'Dibatalkan'])->nullable();
             $table->foreignId('tipe_layanan_id')->nullable()->references('id_tipe_layanan')->on('tipe_layanan')->onDelete('cascade')->onUpdate('cascade');
             $table->enum('status_pembayaran', ['Menunggu', 'Berhasil', 'Gagal'])->nullable();
-            $table->integer('total_harga')->nullable();
+            $table->decimal('total_harga', 15, 2)->nullable();
             $table->float('jarak')->nullable();
             $table->text('catatan')->nullable();
             $table->text('alamat')->nullable();
