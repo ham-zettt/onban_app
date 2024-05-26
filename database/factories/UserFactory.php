@@ -34,7 +34,7 @@ class UserFactory extends Factory
 
             'role' => "worker",
 
-            // 'role' => "admin"
+
 
         ];
     }
