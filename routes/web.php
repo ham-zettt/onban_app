@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\User\UserOrderHistoriController;
 use App\Http\Controllers\SessionControllerAdmin;
 use App\Http\Controllers\Admin\VoucherController;
 use App\Http\Controllers\User\UserChatController;
@@ -58,6 +59,8 @@ Route::prefix('register')->group(function () {
 // Route Customer
 Route::middleware(['auth', 'is_customer'])->group(function () {
     Route::get("/home", HomeController::class)->name('home');
+    Route::get("/user/profile", [UserProfileController::class, "index"])->name('profile');
+    Route::get("/user/orderHistory", [UserOrderHistoriController::class, "index"])->name('orderHistory');
     // Route Order
     Route::get("/order/cancel/{id_order}", [CancelUserOrderController::class, "cancelOrder"])->name('cancel-order');
 
@@ -69,7 +72,6 @@ Route::middleware(['auth', 'is_customer'])->group(function () {
 
     Route::get("/order/find-worker", FindWorkerController::class)->name('worker-find');
     Route::get("/user/vouchers", [UserVoucherController::class, "index"])->name('voucher');
-    Route::get("/user/profile", [UserProfileController::class, "index"])->name('profile');
     Route::get("/user/userChat", [UserChatController::class, "index"])->name('userChat');
     Route::get("/order/payment-info", [PaymentInfoController::class, "index"])->name('payment-info');
 });

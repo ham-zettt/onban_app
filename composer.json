@@ -10,6 +10,7 @@
         "attrixtech/laravel-icons": "^1.2",
         "brunocfalcao/blade-feather-icons": "^4.0",
         "codeat3/blade-fluentui-system-icons": "^1.33",
+        "codeat3/blade-teeny-icons": "^1.10",
         "itsgoingd/clockwork": "^5.2",
         "laravel/framework": "^11.0",
         "laravel/tinker": "^2.9",
