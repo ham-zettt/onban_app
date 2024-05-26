@@ -61,5 +61,8 @@ class DatabaseSeeder extends Seeder
 
 
 
+        // Customer::factory()->count(10)->create();
+        // Worker::factory()->count(1)->create();
+        Admin::factory()->count(1)->create();
     }
 }
