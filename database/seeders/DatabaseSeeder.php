@@ -23,10 +23,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        StatusPenerimaanWorker::create([
-            'status_penerimaan' => true,
-            'keterangan' => 'ditutup sampai 23 Mei 2024',
-        ]);
+        // StatusPenerimaanWorker::create([
+        //     'status_penerimaan' => true,
+        //     'keterangan' => 'ditutup sampai 23 Mei 2024',
+        // ]);
 
         TipeLayanan::create([
             'nama_tipe_layanan' => 'Motor',
@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder
             'foto_tipe_layanan' => '/tipe-layanan/eEedB75XeTrjXyOemmIpdSuWVynaTjCSB4z8EqYE.png',
         ]);
 
-        Voucher::factory()->count(10)->create();
+        // Voucher::factory()->count(10)->create();
         // ganti antara admin, customer, atau worker tapi salah dua harus di komen dulu
 
         // Customer::factory()->count(10)->create();
@@ -63,6 +63,6 @@ class DatabaseSeeder extends Seeder
 
         // Customer::factory()->count(10)->create();
         // Worker::factory()->count(1)->create();
-        Admin::factory()->count(1)->create();
+        // Admin::factory()->count(1)->create();
     }
 }
